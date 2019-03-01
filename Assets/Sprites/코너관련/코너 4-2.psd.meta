@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: db284910c42a4964cae8238e496d9cef
+timeCreated: 1450040226
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_0"
+    21300002: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_1"
+    21300004: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_2"
+    21300006: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_3"
+    21300008: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_4"
+    21300010: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_5"
+    21300012: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_6"
+    21300014: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_7"
+    21300016: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_8"
+    21300018: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_9"
+    21300020: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_10"
+    21300022: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_11"
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 512
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  - buildTarget: Android
+    maxTextureSize: 512
+    textureFormat: -1
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_0"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_1"
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_2"
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_3"
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_4"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_5"
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_6"
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_7"
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_8"
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_9"
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_10"
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: "\uCF54\uB108\uB465\uAE00 \uD770\uC0C9 8\uBD84\uC6D0 \uC0C1\uB2E8_11"
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 8
+        height: 128
+      alignment: 9
+      pivot: {x: 0.133, y: 0.867}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
