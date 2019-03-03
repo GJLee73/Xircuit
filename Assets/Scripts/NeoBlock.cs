@@ -47,7 +47,6 @@ public class NeoBlock : MonoBehaviour {
 	private bool isOpening;
 	private bool isClosing;
 	public Sprite WhiteCircle, BlackDonut;
-	private static int[] _BlockNumber = new int[8];
 	public int[] BlockNumber;
 	private static int[] BN = new int[8];
 	//private static int SortofBlock;
@@ -84,8 +83,6 @@ public class NeoBlock : MonoBehaviour {
 	private bool isWaved;
 
 	void Awake () {
-		_BlockNumber = BlockNumber;
-		Debug.Log (BlockNumber[1]);
 		if (!CustomScale) {
 			GetComponent<CircleCollider2D> ().radius = 4.0f;
 		}
@@ -363,9 +360,8 @@ public class NeoBlock : MonoBehaviour {
 		isClosing = true;
 		isClicked = false;
 		if (isEquipped&&!BC.Equals(8)) {
-			
 			BlockNumber[BlockColor]++;
-			C[BlockColor].SendMessage("ResetNumber");
+			C[BlockColor].SendMessage("Plus");
 		}
 
 		if (!BC.Equals (8)) {
@@ -493,9 +489,9 @@ public class NeoBlock : MonoBehaviour {
 		//Ob.SendMessage ("Show");
 		//Ob.SendMessage ("ResetNumber");
 		if (isEquipped) {
-			AddBlock (BlockColor);
 			isEquipped = false;
-			C[BlockColor].SendMessage("ResetNumber");
+			//C[BlockColor].gameObject.SetActive(true);
+			C[BlockColor].SendMessage("Plus");
 			BlockColor = 8;
 		}
 		//isOpening = true;
@@ -672,47 +668,6 @@ public class NeoBlock : MonoBehaviour {
 			yield return new WaitForFixedUpdate ();
 		}
 		//}
-	}
-
-	public void AddBlock(int color){
-		Debug.Log("block Num increased");
-		_BlockNumber [color]++;
-		C[color].GetComponent<ChoosingBlock>().ResetNumber();
-	}
-
-	public void AddBlock(int[] args){
-		//args == [color, amount]
-		Debug.Log("block Num increased");
-		int color = args[0];
-		int amount = args [1];
-		for (int i = 0; i < amount; i++) {
-			_BlockNumber [color]++;
-		}
-		C[color].GetComponent<ChoosingBlock>().ResetNumber();
-	}
-
-	public void ReduceBlock(int color){
-		Debug.Log("block Num decreased");
-		_BlockNumber [color]--;
-		C[color].GetComponent<ChoosingBlock>().ResetNumber();
-	}
-
-	public void ReduceBlock(int[] args){
-		Debug.Log("block Num decreased");
-		int color = args[0];
-		int amount = args [1];
-		for (int i = 0; i < amount; i++) {
-			//C[color].GetComponent<ChoosingBlock>().Plus();
-			_BlockNumber [color]--;
-		}
-		C[color].GetComponent<ChoosingBlock>().ResetNumber();
-	}
-
-	public static int GetBlockNum(int color){
-		if (color < 0 || color > 7) {
-			throw new UnityException ("invalid color number");
-		}
-		return _BlockNumber [color];
 	}
 
 	public static class CoroutineUtilities {

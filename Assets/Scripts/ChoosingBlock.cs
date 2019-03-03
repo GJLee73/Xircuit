@@ -5,6 +5,7 @@ public class ChoosingBlock : MonoBehaviour {
 	public GameObject MotherBlock;
 	public bool Enabled;
 	public int BlockColor;
+	private static int[] BlockCount = new int[8];
 	public Sprite[] NumberSprite;
 	public SpriteRenderer Number;
 	public SpriteRenderer Border;
@@ -27,15 +28,14 @@ public class ChoosingBlock : MonoBehaviour {
 		C = GetComponent<CircleCollider2D> ();
 		ChangeColor (BlockColor);
 		Hide ();
-	}
-
-	void Start(){
 		if (isActivated) {
-			Number.sprite = NumberSprite [NeoBlock.GetBlockNum(BlockColor)];
+			BlockCount [BlockColor] = MotherBlock.GetComponent<NeoBlock> ().BlockNumber [BlockColor];
+			Number.sprite = NumberSprite [BlockCount [BlockColor]];
 		}
 		else if (!isActivated) {
 			Number.sprite = null;
 		}
+
 	}
 
 	void RemoveSelf(){
@@ -90,19 +90,13 @@ public class ChoosingBlock : MonoBehaviour {
 
 
 
-	public void ResetNumber(){
-		if (BlockColor == 6) {
-			Debug.Log (NeoBlock.GetBlockNum (BlockColor));
-		}
-		if (NeoBlock.GetBlockNum(BlockColor) > 0) {
-			isActivated = true;
-		}
+	void ResetNumber(){
 		if (isActivated) {
-			Number.sprite = NumberSprite [NeoBlock.GetBlockNum(BlockColor)];
-			if (NeoBlock.GetBlockNum(BlockColor).Equals (0)) {
+			Number.sprite = NumberSprite [BlockCount [BlockColor]];
+			if (BlockCount [BlockColor].Equals (0)) {
 				//S.enabled = false;
 				C.enabled = false;
-			} else if (NeoBlock.GetBlockNum(BlockColor) > 0) {
+			} else if (BlockCount [BlockColor] > 0) {
 				S.enabled = true;
 				C.enabled = true;
 			}
@@ -111,14 +105,13 @@ public class ChoosingBlock : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnMouseDown(){
-		int BlockNum = NeoBlock.GetBlockNum (BlockColor);
-		if (isActivated&&Enabled&&BlockNum>0) {
+		if (isActivated&&Enabled&&BlockCount[BlockColor]>0) {
 			
 			//Number.transform.position = T.position + K * new Vector3 (Co, Si, 0.0f);
 			MotherBlock.SendMessage ("Cloose", BlockColor);
-			MotherBlock.SendMessage("ReduceBlock", BlockColor);
-			Number.sprite = NumberSprite[BlockNum];
-			if(BlockNum.Equals(0)){
+			BlockCount[BlockColor]--;
+			Number.sprite = NumberSprite[BlockCount[BlockColor]];
+			if(BlockCount[BlockColor].Equals(0)){
 				//S.enabled = false;
 				C.enabled = false;
 			}
@@ -126,18 +119,14 @@ public class ChoosingBlock : MonoBehaviour {
 		}
 	}
 
-	/*public void Plus(){
-		if (!isActivated) {
-			isActivated = true;
+	void Plus(){
+		if (isActivated) {
+			BlockCount [BlockColor]++;
+			Number.sprite = NumberSprite [BlockCount [BlockColor]];
+			S.enabled = true;
+			C.enabled = true;
 		}
-		//if (isActivated) {
-		//BlockCount [BlockColor]++;
-		Number.sprite = NumberSprite [NeoBlock.GetBlockNum(BlockColor)];
-		S.enabled = true;
-		C.enabled = true;
-		//}
-	}*/
-
+	}
 
 
 	void ChangeColor(int C){
