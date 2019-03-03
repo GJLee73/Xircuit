@@ -14,6 +14,7 @@ public class AdMobManager : MonoBehaviour
 	[SerializeField] public static string deviceId="";
 	private const string INTER_TEST_ID = "ca-app-pub-3940256099942544/1033173712";
 	private const string REWARD_TEST_ID = "ca-app-pub-3940256099942544/5224354917";
+	public static bool interErrorOccured = false;
 
 	void Awake (){
 		DontDestroyOnLoad (this);
@@ -34,7 +35,7 @@ public class AdMobManager : MonoBehaviour
 		//interstitialAd.OnAdLoaded += OnAdLoaded;
 		//광고요청을 로드하지 못했을 때 호출됩니다.
 		//rewardAd.OnAdFailedToLoad += OnAdFailedToLoad;
-		//interstitialAd.OnAdFailedToLoad += OnAdFailedToLoad;
+		//interstitialAd.OnAdFailedToLoad += OnInterAdFailedToLoad;
 		//광고가 표시될 때 호출됩니다.
 		//rewardAd.OnAdOpening += OnAdOpening;
 		//광고가 재생되기 시작하면 호출됩니다.
@@ -52,6 +53,7 @@ public class AdMobManager : MonoBehaviour
 	}
 
 	public static void LoadAd(string mode){
+		interErrorOccured = false;
 		AdRequest request = new AdRequest.Builder ().Build ();
 		if (isTest) {
 			if (deviceId.Length > 0) {
@@ -60,6 +62,7 @@ public class AdMobManager : MonoBehaviour
 		}
 		if (mode == "interstitial") {
 			interstitialAd = new InterstitialAd (interstitialUnitId);
+			interstitialAd.OnAdFailedToLoad += OnInterAdFailedToLoad;
 			interstitialAd.LoadAd (request);
 		} else if (mode == "reward") {
 			rewardAd = RewardBasedVideoAd.Instance;
@@ -115,6 +118,10 @@ public class AdMobManager : MonoBehaviour
 	void OnMouseDown(){
 		Debug.Log ("AAAA");
 		LoadAd ("interstitial");
+	}
+
+	private static void OnInterAdFailedToLoad(object sender, AdFailedToLoadEventArgs e){
+		interErrorOccured = true;
 	}
 }
 

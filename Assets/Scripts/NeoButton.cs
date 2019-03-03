@@ -33,8 +33,12 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	void Awake(){
+		////it's cheat code, remove it before production build !!!
+		PlayerPrefs.SetInt("ClearedStage", 50);
+		///
+
 		Tr = transform;
-		if (((float)Screen.width / Screen.height) > 1.59f && ((float)Screen.width / Screen.height) < 1.61f) {  //16/10
+			if (((float)Screen.width / Screen.height) > 1.59f && ((float)Screen.width / Screen.height) < 1.61f) {  //16/10
 			Tr.position = new Vector3 (33.0f, -20.0f, 0.0f);
 			blinder.transform.localScale = new Vector3 (4.0f, 4.5f, 1.0f);
 		} else if ((((float)Screen.width / Screen.height) > 1.3f) && (((float)Screen.width / Screen.height) < 1.35f)) { //4/3
@@ -153,16 +157,23 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
+		bool adEnabled = false;
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
-		AdMobManager.LoadAd ("interstitial");
-		AdMobManager.interstitialAd.OnAdClosed += AdClosedHandler;
+		Count++;
+		if (Count % 10 == 0 || Count % 10 > 5) {
+			adEnabled = true;
+		}
+
+		if (adEnabled) {
+			AdMobManager.LoadAd ("interstitial");
+			AdMobManager.interstitialAd.OnAdClosed += HandleOnAdClosed;
+		}
 
 		//AdMobManager.interstitialAd.OnAdClosed += AdClosedHandler;
 		//AdMobManager.LoadAd ("interstitial");
 		isChanging = true;
-		Count++;
 		if (!((Count / 10).Equals (0))) {
 			T1.position = new Vector3 (-2.0f, 0.0f, 0.0f);
 			T2.position = new Vector3 (2.0f, 0.0f, 0.0f);
@@ -184,7 +195,13 @@ public class NeoButton : MonoBehaviour {
 		S1.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		S2.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		// 2019/2/25 추가한 구글 애드몹 관련 코드
-		AdMobManager.ShowAd("interstitial");
+		if (adEnabled && !AdMobManager.interErrorOccured) {
+			AdMobManager.ShowAd ("interstitial");
+		} else {
+			Application.LoadLevel ("Void");
+			StartCoroutine ("ChangeScene", Count);
+			isChanging = false;
+		}
 
 
 		// 2019/2/25 추가한 구글 애드몹 관련 코드
@@ -192,7 +209,7 @@ public class NeoButton : MonoBehaviour {
 		//isChanging = false;
 	}
 
-	private void AdClosedHandler(object sender, EventArgs args){
+	private void HandleOnAdClosed(object sender, EventArgs args){
 		Application.LoadLevel ("Void");
 		StartCoroutine ("ChangeScene", Count);
 		isChanging = false;
