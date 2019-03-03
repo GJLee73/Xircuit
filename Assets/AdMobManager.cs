@@ -7,25 +7,36 @@ public class AdMobManager : MonoBehaviour
 	public static RewardBasedVideoAd rewardAd;
 	public static InterstitialAd interstitialAd;
 
-	[SerializeField] public static string appId = "ca-app-pub-3411986967639265~6304561814";
-	[SerializeField] public static string interstitialUnitId = "ca-app-pub-3940256099942544/1033173712";
-	[SerializeField] public static string RewardunitId = "ca-app-pub-3940256099942544/1033173712";
-	[SerializeField] public static bool isTest = true;
-	[SerializeField] public static string deviceId="";
+	public static string appId = "";
+	public string _appId = "";
+	public static string interstitialUnitId = "";
+	public string _interstitialUnitId = "";
+	public static string rewardUnitId = "";
+	public string _rewardUnitId = "";
+ 	public static bool isTest = true;
+	public bool _isTest = true;
+	public static string deviceId="";
+	public string _deviceId="";
 	private const string INTER_TEST_ID = "ca-app-pub-3940256099942544/1033173712";
 	private const string REWARD_TEST_ID = "ca-app-pub-3940256099942544/5224354917";
 	public static bool interErrorOccured = false;
 
 	void Awake (){
+		isTest = _isTest;
+		deviceId = _deviceId;
+		appId = _appId;
+		interstitialUnitId = _interstitialUnitId;
+		rewardUnitId = _rewardUnitId;
 		DontDestroyOnLoad (this);
 	}
 
 	void Start ()
 	{
-		MobileAds.Initialize(appId);
+		MobileAds.Initialize(_appId);
 		if (isTest) {
-			interstitialUnitId = INTER_TEST_ID;
-			RewardunitId = REWARD_TEST_ID;
+			//interstitialUnitId = INTER_TEST_ID;
+			interstitialUnitId = "ca-app-pub-3411986967639265/5893498274";
+			rewardUnitId = REWARD_TEST_ID;
 		}
 		//rewardAd = RewardBasedVideoAd.Instance;
 		//interstitialAd = new InterstitialAd (interstitialUnitId);
@@ -66,7 +77,7 @@ public class AdMobManager : MonoBehaviour
 			interstitialAd.LoadAd (request);
 		} else if (mode == "reward") {
 			rewardAd = RewardBasedVideoAd.Instance;
-			rewardAd.LoadAd (request, RewardunitId);
+			rewardAd.LoadAd (request, rewardUnitId);
 		}
 	}
 
@@ -116,7 +127,6 @@ public class AdMobManager : MonoBehaviour
 	void OnAdLeavingApplication(object sender, EventArgs e) { Debug.Log("OnAdLeavingApplication"); }
 
 	void OnMouseDown(){
-		Debug.Log ("AAAA");
 		LoadAd ("interstitial");
 	}
 
