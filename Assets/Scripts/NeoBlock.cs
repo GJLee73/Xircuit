@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NeoBlock : MonoBehaviour {
 
@@ -104,17 +105,6 @@ public class NeoBlock : MonoBehaviour {
 		if (Choosable) {
 			bigOne.transform.localScale = new Vector3 (4.1f, 4.1f, 1.0f);
 			bigOne.SetActive (false);
-			/*for (int i=0; i<8; i++) {
-				Cosine [i] = Mathf.Cos (Mathf.Deg2Rad * Degree [i]);
-				Sine [i] = Mathf.Sin (Mathf.Deg2Rad * Degree [i]);
-				if(C[i]!=null){
-					//Debug.Log (Degree[i]);
-					CC[i] = C[i].GetComponent<ChoosingBlock> ();
-					//C[i].rotation = Quaternion.Euler(0.0f, 0.0f,Degree[i]);
-				}
-		
-				
-			}*/
 		}
 
 
@@ -691,6 +681,22 @@ public class NeoBlock : MonoBehaviour {
 			throw new UnityException ("invalid color number");
 		}
 		return _BlockNumber [color];
+	}
+
+	public void Roulette(int start){
+		int[] order = new int[]{ 1, 2, 4, 0, 6, 5, 3, 7 };
+		int startIndex = System.Array.IndexOf(order, start);
+		List<Transform> sections = new List<Transform> ();
+		for (int i = 0; i < 8; i++) {
+			if (startIndex > 7) {
+				startIndex -= 8;
+			}
+			if (GetBlockNum(order[startIndex]) == 0){
+				sections.Add (C [order [startIndex]]);
+			}
+			startIndex++;
+		}
+		RewardRoulette.rouletteCircle.SendMessage ("RouletteAnim", sections);
 	}
 
 	public static class CoroutineUtilities {

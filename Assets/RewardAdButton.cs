@@ -15,7 +15,8 @@ public class RewardAdButton : MonoBehaviour {
 
 	void OnMouseDown(){
 		int randomColor = Random.Range (0, 8);
-		AddBlock (randomColor);
+		//AddBlock (randomColor);
+		StartRoulette();
 	}
 
 	void AddBlock(int color, int amount=1){
@@ -23,5 +24,9 @@ public class RewardAdButton : MonoBehaviour {
 			throw new UnityException ("unvalid color number");
 		}
 		motherBlock.SendMessage ("AddBlock", color);
+	}
+
+	void StartRoulette(){
+		motherBlock.SendMessage ("Roulette", 6);
 	}
 }
