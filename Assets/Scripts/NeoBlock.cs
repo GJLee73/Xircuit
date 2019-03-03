@@ -48,7 +48,7 @@ public class NeoBlock : MonoBehaviour {
 	private bool isClosing;
 	public Sprite WhiteCircle, BlackDonut;
 	public int[] BlockNumber;
-	private static int[] BN = new int[8];
+	private static int[] _BlockNumber = new int[8];
 	//private static int SortofBlock;
 	public int[] Degree;
 	private float[] Cosine = new float[8];
@@ -83,6 +83,7 @@ public class NeoBlock : MonoBehaviour {
 	private bool isWaved;
 
 	void Awake () {
+		_BlockNumber = BlockNumber;
 		if (!CustomScale) {
 			GetComponent<CircleCollider2D> ().radius = 4.0f;
 		}
@@ -361,7 +362,8 @@ public class NeoBlock : MonoBehaviour {
 		isClicked = false;
 		if (isEquipped&&!BC.Equals(8)) {
 			BlockNumber[BlockColor]++;
-			C[BlockColor].SendMessage("Plus");
+			//C[BlockColor].SendMessage("Plus");
+			C[BlockColor].SendMessage("ResetNumber");
 		}
 
 		if (!BC.Equals (8)) {
@@ -490,8 +492,10 @@ public class NeoBlock : MonoBehaviour {
 		//Ob.SendMessage ("ResetNumber");
 		if (isEquipped) {
 			isEquipped = false;
+			AddBlock (BlockColor);
 			//C[BlockColor].gameObject.SetActive(true);
-			C[BlockColor].SendMessage("Plus");
+			//C[BlockColor].SendMessage("Plus");
+			C[BlockColor].SendMessage("ResetNumber");
 			BlockColor = 8;
 		}
 		//isOpening = true;
@@ -668,6 +672,25 @@ public class NeoBlock : MonoBehaviour {
 			yield return new WaitForFixedUpdate ();
 		}
 		//}
+	}
+
+	public void AddBlock(int color){
+		Debug.Log ("block Num increased");
+		_BlockNumber [color]++;
+		C [color].GetComponent<ChoosingBlock> ().ResetNumber ();
+	}
+
+	public void ReduceBlock(int color){
+		Debug.Log ("block Num decreased");
+		_BlockNumber [color]--;
+		C [color].GetComponent<ChoosingBlock> ().ResetNumber ();
+	}
+
+	public static int GetBlockNum(int color){
+		if (color < 0 || color > 7) {
+			throw new UnityException ("invalid color number");
+		}
+		return _BlockNumber [color];
 	}
 
 	public static class CoroutineUtilities {
