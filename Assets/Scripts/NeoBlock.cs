@@ -279,6 +279,10 @@ public class NeoBlock : MonoBehaviour {
 		
 
 	void OnMouseDown(){
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
+
 		if (Tuto) {
 			Tuto = false;
 			Finger.SendMessage ("Fade");
@@ -339,7 +343,7 @@ public class NeoBlock : MonoBehaviour {
 			Vector2 MPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			//Debug.Log (Pos.x + radius +" "+ MPos.x);
 
-			if(Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
+			if(!RewardAdButton.isChoosing&&Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
 				isClicked = false;
 				StartCoroutine("Cloose", 8);
 			}

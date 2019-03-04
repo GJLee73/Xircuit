@@ -108,6 +108,9 @@ public class ChoosingBlock : MonoBehaviour {
 
 	// Update is called once per frame
 	void OnMouseDown(){
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
 		int BlockNum = NeoBlock.GetBlockNum (BlockColor);
 		if (isActivated&&Enabled&&BlockNum>0) {
 			

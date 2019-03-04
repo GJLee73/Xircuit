@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using GoogleMobileAds.Api;
 
 public class RewardAdButton : MonoBehaviour {
 	public NeoBlock motherBlock;
-	// Use this for initialization
-	void Start () {
 
+	//this variable is just for test
+	public static bool isChoosing = false;
+	public static RewardAdButton instance;
+
+	void Awake(){
+		//instance = GetComponent<RewardAdButton> ();
+	}
+
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
@@ -14,9 +23,32 @@ public class RewardAdButton : MonoBehaviour {
 	}
 
 	void OnMouseDown(){
-		int randomColor = Random.Range (0, 8);
 		//AddBlock (randomColor);
-		StartRoulette();
+		/*if (mode) {
+			AdMobManager.LoadAd ("reward");
+			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
+			AdMobManager.ShowAd ("reward");
+		} else {
+			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
+			AddBlock (chosenColor);
+			mode = true;
+		}*/
+
+
+		if (!isChoosing) {
+			StartRoulette ();
+			isChoosing = true;
+		} else {
+			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
+			AddBlock (chosenColor);
+			isChoosing = false;
+		}
+		Debug.Log (isChoosing);
+	}
+
+	void HandleRewardBasedVideoRewarded(object sender, Reward args){
+		StartRoulette ();
+		isChoosing = false;
 	}
 
 	void AddBlock(int color, int amount=1){
