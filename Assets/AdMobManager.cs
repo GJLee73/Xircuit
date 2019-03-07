@@ -69,6 +69,8 @@ public class AdMobManager : MonoBehaviour
 		if (isTest) {
 			if (deviceId.Length > 0) {
 				request = new AdRequest.Builder ().AddTestDevice (AdRequest.TestDeviceSimulator).AddTestDevice (deviceId).Build ();
+			} else {
+				request = new AdRequest.Builder ().AddTestDevice (AdRequest.TestDeviceSimulator).Build ();
 			}
 		}
 		if (mode == "interstitial") {

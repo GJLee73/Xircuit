@@ -13,10 +13,11 @@ public class RewardAdButton : MonoBehaviour {
 		//instance = GetComponent<RewardAdButton> ();
 		instance = this.gameObject;
 		DontDestroyOnLoad (this.gameObject);
+		AdMobManager.LoadAd ("reward");
 	}
 
 	void Start () {
-		
+		isChoosing = false;
 	}
 	
 	// Update is called once per frame
@@ -37,19 +38,27 @@ public class RewardAdButton : MonoBehaviour {
 		}*/
 
 
+
 		if (!isChoosing) {
-			StartRoulette ();
-			isChoosing = true;
+			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
+			AdMobManager.ShowAd ("reward");
+			//StartRoulette ();
+			//isChoosing = true;
 		} else {
 			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
 			AddBlock (chosenColor);
 			isChoosing = false;
 		}
+		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0);
+	}
+
+	void OnMouseUp(){
+		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255);
 	}
 
 	void HandleRewardBasedVideoRewarded(object sender, Reward args){
 		StartRoulette ();
-		isChoosing = false;
+		isChoosing = true;
 	}
 
 	void AddBlock(int color, int amount=1){
