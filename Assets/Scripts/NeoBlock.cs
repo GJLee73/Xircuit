@@ -293,6 +293,7 @@ public class NeoBlock : MonoBehaviour {
 				isRemoved = false;
 				isClicked = true;
 				Open ();
+
 				for(int k = 0; k<8; k++){
 					//if(C[k]!=null){
 						C [k].SendMessage ("Open");
@@ -301,6 +302,7 @@ public class NeoBlock : MonoBehaviour {
 				}
 			} else if (isClicked) {
 				isClicked = false;
+				RewardAdButton.instance.gameObject.SetActive (false);
 				//bigOne.SetActive (false);
 				for(int k = 0; k<8; k++){
 					//if(C[k]!=null){
@@ -316,6 +318,7 @@ public class NeoBlock : MonoBehaviour {
 		//if (isClicked) {
 		//Au.clip = Closing;
 		//Au.Play();
+		RewardAdButton.instance.gameObject.SetActive(false);
 		if (Order.Equals (ConvergeNumber)) {
 			if (!BC.Equals (8)) {
 				Au.clip = Pene[Random.Range(0,3)];
@@ -352,17 +355,18 @@ public class NeoBlock : MonoBehaviour {
 	}
 
 	void Close(int BC, Transform Ob, float Co, float Si){
+		RewardAdButton.instance.gameObject.SetActive (false);
 		isClosing = true;
 		isClicked = false;
 		if (isEquipped&&!BC.Equals(8)) {
-			BlockNumber[BlockColor]++;
+			//BlockNumber[BlockColor]++;
 			//C[BlockColor].SendMessage("Plus");
 			C[BlockColor].SendMessage("ResetNumber");
 		}
 
 		if (!BC.Equals (8)) {
 			BlockColor = BC;
-			BlockNumber[BC]--;
+			//BlockNumber[BC]--;
 			isEquipped = true;
 			ChangeWaveColor();
 			S.sprite = WhiteCircle;
@@ -476,7 +480,7 @@ public class NeoBlock : MonoBehaviour {
 
 	//void Open(Transform Ob, float Co, float Si){
 	void Open(){
-		//Debug.Log ("Open");
+
 		removeNum = 0;
 		Blk.color = new Color (0.0f, 0.0f, 0.0f, 1.0f);
 		S.sprite = BlackDonut;
@@ -502,6 +506,9 @@ public class NeoBlock : MonoBehaviour {
 			}
 		}
 		bigOne.SetActive (true);
+		//RewardAdButton.instance.gameObject.SetActive (true);
+		RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
+		RewardAdButton.instance.transform.position = transform.position + new Vector3 (3, -3, 0);
 		//firstClk = true;
 		//isOpening = false;
 		StartCoroutine ("TouchPositionCheck");
@@ -676,7 +683,7 @@ public class NeoBlock : MonoBehaviour {
 
 	public void ReduceBlock(int color){
 		Debug.Log ("block Num decreased");
-		_BlockNumber [color]--;
+		_BlockNumber [color] -= 1;
 		C [color].GetComponent<ChoosingBlock> ().ResetNumber ();
 	}
 

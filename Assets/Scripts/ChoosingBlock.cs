@@ -16,6 +16,7 @@ public class ChoosingBlock : MonoBehaviour {
 	private bool M;
 	public bool isActivated = true;
 	private Animator An;
+	private static bool rewardButtonShown = false;
 	// Use this for initialization
 	void Awake(){
 		Enabled = true;
@@ -52,6 +53,8 @@ public class ChoosingBlock : MonoBehaviour {
 
 	void Close(){
 		//Debug.Log ("Close");
+		rewardButtonShown = false;
+		RewardAdButton.instance.gameObject.SetActive (false);
 		Enabled = false;
 		An.SetTrigger ("Close");
 	}
@@ -95,6 +98,7 @@ public class ChoosingBlock : MonoBehaviour {
 			isActivated = true;
 		}
 		if (isActivated) {
+			Debug.Log (NeoBlock.GetBlockNum (BlockColor));
 			Number.sprite = NumberSprite [NeoBlock.GetBlockNum(BlockColor)];
 			if (NeoBlock.GetBlockNum(BlockColor).Equals (0)) {
 				//S.enabled = false;
@@ -166,5 +170,12 @@ public class ChoosingBlock : MonoBehaviour {
 			S.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 		}
 		S.color -= new Color (0.0f, 0.0f, 0.0f, 150 / 255f);
+	}
+
+	public void ShowRewardAdButton(){
+		if (!rewardButtonShown) {
+			rewardButtonShown = true;
+			RewardAdButton.instance.gameObject.SetActive (true);	
+		}
 	}
 }

@@ -3,14 +3,16 @@ using System.Collections;
 using GoogleMobileAds.Api;
 
 public class RewardAdButton : MonoBehaviour {
-	public NeoBlock motherBlock;
+	private static NeoBlock motherBlock;
+	public static GameObject instance;
 
 	//this variable is just for test
 	public static bool isChoosing = false;
-	public static RewardAdButton instance;
 
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
+		instance = this.gameObject;
+		DontDestroyOnLoad (this.gameObject);
 	}
 
 	void Start () {
@@ -43,7 +45,6 @@ public class RewardAdButton : MonoBehaviour {
 			AddBlock (chosenColor);
 			isChoosing = false;
 		}
-		Debug.Log (isChoosing);
 	}
 
 	void HandleRewardBasedVideoRewarded(object sender, Reward args){
@@ -60,5 +61,9 @@ public class RewardAdButton : MonoBehaviour {
 
 	void StartRoulette(){
 		motherBlock.SendMessage ("Roulette", 6);
+	}
+		
+	public static void SetMotherBlock(NeoBlock motherB){
+		motherBlock = motherB;
 	}
 }
