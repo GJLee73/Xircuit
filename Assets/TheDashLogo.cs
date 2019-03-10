@@ -2,20 +2,20 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class loadingBall : MonoBehaviour {
-	public float ChangeSpeed;
+public class TheDashLogo : MonoBehaviour {
+	public float ChangeSpeed = 2.0f;
 	// Use this for initialization
-
-	void Awake () {
-		transform.position = new Vector3 (-12.0f, 25.0f, 0.0f); 
-	}
-
-	void OnCollisionEnter2D(Collision2D col){
+	void Start () {
 		StartCoroutine ("SceneChange");
+	}
+	
+	// Update is called once per frame
+	void Update () {
+	
 	}
 
 	IEnumerator SceneChange(){
 		yield return new WaitForSeconds (ChangeSpeed);
-		SceneManager.LoadScene ("TheDashLogo");
+		SceneManager.LoadScene (1);
 	}
 }

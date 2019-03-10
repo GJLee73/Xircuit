@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class StartScene2 : MonoBehaviour {
 
@@ -58,6 +59,7 @@ public class StartScene2 : MonoBehaviour {
 			backG.color += new Color (0.0f,0.0f,0.0f,5/255f);
 			yield return new WaitForSeconds (0.05f);
 		}
-		Application.LoadLevel ("Intermid");
+		SceneManager.LoadScene ("Intermid");
+		//Application.LoadLevel ("Intermid");
 	}
 }

@@ -35,7 +35,7 @@ public class AdMobManager : MonoBehaviour
 		MobileAds.Initialize(_appId);
 		if (isTest) {
 			//interstitialUnitId = INTER_TEST_ID;
-			interstitialUnitId = "ca-app-pub-3411986967639265/5893498274";
+			interstitialUnitId = INTER_TEST_ID;
 			rewardUnitId = REWARD_TEST_ID;
 		}
 		//rewardAd = RewardBasedVideoAd.Instance;
