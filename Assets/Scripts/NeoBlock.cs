@@ -345,13 +345,16 @@ public class NeoBlock : MonoBehaviour {
 
 			Vector2 MPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			//Debug.Log (Pos.x + radius +" "+ MPos.x);
-
-			if(!RewardAdButton.isChoosing&&Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
+			if(!RewardAdButton.isChoosing&&!RewardAdButton.instance.GetComponent<BoxCollider2D>().OverlapPoint(MPos)&&Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
 				isClicked = false;
 				StartCoroutine("Cloose", 8);
 			}
 			yield return new WaitForEndOfFrame();
 		}
+	}
+
+	bool CheckContained(GameObject target, Vector2 pos){
+		return target.GetComponent<BoxCollider2D> ().OverlapPoint (pos);
 	}
 
 	void Close(int BC, Transform Ob, float Co, float Si){
@@ -508,7 +511,7 @@ public class NeoBlock : MonoBehaviour {
 		bigOne.SetActive (true);
 		//RewardAdButton.instance.gameObject.SetActive (true);
 		RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
-		RewardAdButton.instance.transform.position = transform.position + new Vector3 (3, -3, 0);
+		RewardAdButton.instance.transform.position = transform.position + new Vector3 (5, -5, 0);
 		//firstClk = true;
 		//isOpening = false;
 		StartCoroutine ("TouchPositionCheck");

@@ -16,6 +16,6 @@ public class TheDashLogo : MonoBehaviour {
 
 	IEnumerator SceneChange(){
 		yield return new WaitForSeconds (ChangeSpeed);
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene ("loading");
 	}
 }

@@ -1217,7 +1217,7 @@ MonoBehaviour:
   _appId: ca-app-pub-3411986967639265~6304561814
   _interstitialUnitId: ca-app-pub-3411986967639265/5893498274
   _rewardUnitId: ca-app-pub-3411986967639265/4533859731
-  _isTest: 0
+  _isTest: 1
   _deviceId: 8DDFE34BEB81A16E163E9794019E50D6
 --- !u!4 &1409389375
 Transform:
@@ -1269,6 +1269,22 @@ Prefab:
     - target: {fileID: 425324, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
       propertyPath: m_RootOrder
       value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 425324, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 425324, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109320, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6109320, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_Size.y
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}

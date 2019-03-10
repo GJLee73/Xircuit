@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Stage/loading.unity
+    path: Assets/Scenes/TheDashLogo.unity
   - enabled: 1
     path: Assets/Scenes/Stage/new stage0.2.unity
   - enabled: 1
@@ -138,4 +138,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/start2.unity
   - enabled: 1
-    path: Assets/Scenes/TheDashLogo.unity
+    path: Assets/Scenes/Stage/loading.unity

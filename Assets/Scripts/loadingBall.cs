@@ -16,6 +16,6 @@ public class loadingBall : MonoBehaviour {
 
 	IEnumerator SceneChange(){
 		yield return new WaitForSeconds (ChangeSpeed);
-		SceneManager.LoadScene ("TheDashLogo");
+		SceneManager.LoadScene (1);
 	}
 }
