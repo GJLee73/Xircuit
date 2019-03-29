@@ -10,6 +10,7 @@ public class RewardAdButton : MonoBehaviour {
 
 	//this variable is just for test
 	public static bool isChoosing = false;
+	public bool isTest = false;
 
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
@@ -46,8 +47,14 @@ public class RewardAdButton : MonoBehaviour {
 		}*/
 
 
+		if (isTest) {
 
+		}
 		if (!isChoosing) {
+			if (isTest) {
+				StartRoulette ();
+				isChoosing = true;
+			}
 			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
 			//AdMobManager.LoadAd ("reward");
 			AdMobManager.ShowAd ("reward");

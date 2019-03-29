@@ -98,7 +98,6 @@ public class ChoosingBlock : MonoBehaviour {
 			isActivated = true;
 		}
 		if (isActivated) {
-			Debug.Log (NeoBlock.GetBlockNum (BlockColor));
 			Number.sprite = NumberSprite [NeoBlock.GetBlockNum(BlockColor)];
 			if (NeoBlock.GetBlockNum(BlockColor).Equals (0)) {
 				//S.enabled = false;
