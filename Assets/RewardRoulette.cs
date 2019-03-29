@@ -24,15 +24,17 @@ public class RewardRoulette : MonoBehaviour {
 	public IEnumerator RouletteAnim(List<Transform> arg){
 		int counter = 0;
 		this.GetComponent<SpriteRenderer> ().enabled = true;
-		while (true) {
-			foreach (Transform tr in arg) {
-				GetComponent<AudioSource> ().clip = audios [counter % 12];
-				GetComponent<AudioSource> ().Play ();
-				transform.eulerAngles = tr.eulerAngles;
-				transform.position = tr.position;
-				chosenSection = tr.GetComponent<ChoosingBlock> ().BlockColor;
-				counter++;
-				yield return new WaitForSeconds (1.0f);
+		if (arg.ToArray().Length != 0) {
+			while (true) {
+				foreach (Transform tr in arg) {
+					GetComponent<AudioSource> ().clip = audios [counter % 12];
+					GetComponent<AudioSource> ().Play ();
+					transform.eulerAngles = tr.eulerAngles;
+					transform.position = tr.position;
+					chosenSection = tr.GetComponent<ChoosingBlock> ().BlockColor;
+					counter++;
+					yield return new WaitForSeconds (0.1f);
+				}
 			}
 		}
 	}

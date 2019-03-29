@@ -1229,7 +1229,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 56db10223c2305f46a26bed01249bfb8, type: 3}
   - {fileID: 8300000, guid: 653c10d29a718ae428ab20474fb997fc, type: 3}
   - {fileID: 8300000, guid: 71f3e26a70d539a48adea0d9b5e28d00, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 71f3e26a70d539a48adea0d9b5e28d00, type: 3}
   - {fileID: 8300000, guid: 56db10223c2305f46a26bed01249bfb8, type: 3}
   - {fileID: 8300000, guid: 37330fcad49af5c4a83477874c582152, type: 3}
   - {fileID: 8300000, guid: 8494030dd2fdcfc4fbf69b6ea121912c, type: 3}
@@ -6325,6 +6325,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11461244, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
       propertyPath: isTest
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21224854, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7cb64da5ef59dcd4b84df74291b4be78,
+        type: 3}
+    - target: {fileID: 425324, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 425324, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
