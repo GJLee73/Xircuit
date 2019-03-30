@@ -301,7 +301,7 @@ public class NeoBlock : MonoBehaviour {
 					//}
 				}
 			} else if (isClicked) {
-				isClicked = false;
+				/*isClicked = false;
 				RewardAdButton.instance.gameObject.SetActive (false);
 				//bigOne.SetActive (false);
 				for(int k = 0; k<8; k++){
@@ -309,7 +309,7 @@ public class NeoBlock : MonoBehaviour {
 						C [k].SendMessage ("Close");
 						//StartCoroutine (Close(8,C[k],Cosine[k], Sine[k]));
 					//}
-				}
+				}*/
 			}
 		}
 	}
@@ -318,7 +318,7 @@ public class NeoBlock : MonoBehaviour {
 		//if (isClicked) {
 		//Au.clip = Closing;
 		//Au.Play();
-		RewardAdButton.instance.gameObject.SetActive(false);
+		//RewardAdButton.instance.gameObject.SetActive(false);
 		if (Order.Equals (ConvergeNumber)) {
 			if (!BC.Equals (8)) {
 				Au.clip = Pene[Random.Range(0,3)];
@@ -337,6 +337,7 @@ public class NeoBlock : MonoBehaviour {
 				C[k].SendMessage("Close");
 			}
 		}
+		//RewardAdButton.instance.gameObject.SetActive(false);
 		//}
 	}
 
@@ -345,10 +346,11 @@ public class NeoBlock : MonoBehaviour {
 
 			Vector2 MPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			//Debug.Log (Pos.x + radius +" "+ MPos.x);
-			if(!RewardAdButton.isChoosing&&!RewardAdButton.instance.GetComponent<BoxCollider2D>().OverlapPoint(MPos)&&Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
+			if(!RewardAdButton.isChoosing&&Input.GetMouseButton(0)&&((MPos.x>Pos.x + radius)||(MPos.x<Pos.x - radius)||(MPos.y> Pos.y + radius)||(MPos.y<Pos.y-radius))){
 				isClicked = false;
 				StartCoroutine("Cloose", 8);
 			}
+			//RewardAdButton.instance.SetActive (false);
 			yield return new WaitForEndOfFrame();
 		}
 	}
@@ -509,9 +511,8 @@ public class NeoBlock : MonoBehaviour {
 			}
 		}
 		bigOne.SetActive (true);
-		//RewardAdButton.instance.gameObject.SetActive (true);
 		RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
-		RewardAdButton.instance.transform.position = transform.position + new Vector3 (5, -5, 0);
+		RewardAdButton.instance.transform.position = transform.position;
 		//firstClk = true;
 		//isOpening = false;
 		StartCoroutine ("TouchPositionCheck");
@@ -706,11 +707,16 @@ public class NeoBlock : MonoBehaviour {
 				startIndex -= 8;
 			}
 			if (GetBlockNum(order[startIndex]) == 0){
+				Debug.Log ("Index: " + order [startIndex]);
 				sections.Add (C [order [startIndex]]);
 			}
 			startIndex++;
 		}
-		RewardRoulette.rouletteCircle.SendMessage ("RouletteAnim", sections);
+		if (sections.Count == 0) {
+			RewardAdButton.isChoosing = false;
+		} else {
+			RewardRoulette.rouletteCircle.SendMessage ("RouletteAnim", sections);
+		}
 	}
 
 	public static class CoroutineUtilities {

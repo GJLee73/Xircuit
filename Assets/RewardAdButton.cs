@@ -30,7 +30,11 @@ public class RewardAdButton : MonoBehaviour {
 	void Start () {
 		isChoosing = false;
 	}
-	
+
+	void Update() {
+		Debug.Log (isChoosing);
+	}
+
 	// Update is called once per frame
 
 
@@ -62,7 +66,10 @@ public class RewardAdButton : MonoBehaviour {
 			//isChoosing = true;
 		} else {
 			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
-			AddBlock (chosenColor);
+			Debug.Log (chosenColor);
+			if (chosenColor != -1) {
+				AddBlock (chosenColor);
+			}
 			isChoosing = false;
 		}
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0);

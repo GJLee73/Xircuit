@@ -177,4 +177,11 @@ public class ChoosingBlock : MonoBehaviour {
 			RewardAdButton.instance.gameObject.SetActive (true);	
 		}
 	}
+
+	public void RemoveRewardAdButton() {
+		if (rewardButtonShown) {
+			rewardButtonShown = false;
+			RewardAdButton.instance.gameObject.SetActive (false);
+		}
+	}
 }

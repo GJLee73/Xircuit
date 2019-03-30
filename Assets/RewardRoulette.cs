@@ -23,8 +23,14 @@ public class RewardRoulette : MonoBehaviour {
 
 	public IEnumerator RouletteAnim(List<Transform> arg){
 		int counter = 0;
-		this.GetComponent<SpriteRenderer> ().enabled = true;
-		if (arg.ToArray().Length != 0) {
+
+		Debug.Log ("count: " + arg.Count);
+		if (arg.Count == 0) {
+			Debug.Log ("Sddssd");
+			chosenSection = -1;
+			RewardAdButton.isChoosing = false;
+		} else {
+			this.GetComponent<SpriteRenderer> ().enabled = true;
 			while (true) {
 				foreach (Transform tr in arg) {
 					GetComponent<AudioSource> ().clip = audios [counter % 12];
