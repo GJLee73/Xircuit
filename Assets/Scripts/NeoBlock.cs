@@ -106,7 +106,7 @@ public class NeoBlock : MonoBehaviour {
 			bigOne.transform.localScale = new Vector3 (4.1f, 4.1f, 1.0f);
 			bigOne.SetActive (false);
 		}
-
+		Blk.gameObject.SetActive (false);
 
 
 		WaveS = Clone.GetComponent<SpriteRenderer> ();

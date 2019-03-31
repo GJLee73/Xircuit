@@ -174,7 +174,8 @@ public class ChoosingBlock : MonoBehaviour {
 	public void ShowRewardAdButton(){
 		if (!rewardButtonShown) {
 			rewardButtonShown = true;
-			RewardAdButton.instance.gameObject.SetActive (true);	
+			RewardAdButton.instance.gameObject.SetActive (true);
+			MotherBlock.GetComponent<SpriteRenderer> ().enabled = false;
 		}
 	}
 
@@ -182,6 +183,15 @@ public class ChoosingBlock : MonoBehaviour {
 		if (rewardButtonShown) {
 			rewardButtonShown = false;
 			RewardAdButton.instance.gameObject.SetActive (false);
+			//MotherBlock.GetComponent<SpriteRenderer> ().enabled = true;
 		}
+	}
+
+	public void ShowMotherBlock(){
+		MotherBlock.GetComponent<SpriteRenderer> ().enabled = true;
+	}
+
+	public void HideMotherBlock(){
+		MotherBlock.GetComponent<SpriteRenderer> ().enabled = false;
 	}
 }

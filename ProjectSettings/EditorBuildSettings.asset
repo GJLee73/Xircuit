@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage/new stage20.unity
   - enabled: 0
     path: Assets/Scenes/Stage/new stage21.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage/new stage22.unity
   - enabled: 0
     path: Assets/Scenes/Stage/new stage23.unity

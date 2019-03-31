@@ -72,11 +72,11 @@ public class RewardAdButton : MonoBehaviour {
 			}
 			isChoosing = false;
 		}
-		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0);
+		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 
 	void OnMouseUp(){
-		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255);
+		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255, 0.5f);
 	}
 
 	void HandleRewardBasedVideoRewarded(object sender, Reward args){
