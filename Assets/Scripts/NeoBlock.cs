@@ -512,7 +512,7 @@ public class NeoBlock : MonoBehaviour {
 		}
 		bigOne.SetActive (true);
 		RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
-		RewardAdButton.instance.transform.position = transform.position;
+		RewardAdButton.instance.transform.position = transform.position + new Vector3(0, 0, -1);
 		//firstClk = true;
 		//isOpening = false;
 		StartCoroutine ("TouchPositionCheck");

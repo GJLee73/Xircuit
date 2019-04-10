@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class RewardRoulette : MonoBehaviour {
 	public static RewardRoulette rouletteCircle;
 	private int chosenSection = -1;
-	public AudioClip[] audios = new AudioClip[12];
+	//public AudioClip[] audios = new AudioClip[12];
+	public AudioClip new_audio;
 	// Use this for initialization
 	void Awake(){
 		rouletteCircle = this.GetComponent<RewardRoulette> ();
@@ -28,7 +29,7 @@ public class RewardRoulette : MonoBehaviour {
 		RewardAdButton.isChoosing = true;
 		while (true) {
 			foreach (Transform tr in arg) {
-				GetComponent<AudioSource> ().clip = audios [counter % 12];
+				//GetComponent<AudioSource> ().clip = audios [counter % 12];
 				GetComponent<AudioSource> ().Play ();
 				transform.eulerAngles = tr.eulerAngles;
 				transform.position = tr.position;
