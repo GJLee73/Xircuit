@@ -712,6 +712,7 @@ public class NeoBlock : MonoBehaviour {
 			}
 			startIndex++;
 		}
+		Debug.Log (sections.Count);
 		if (sections.Count == 0) {
 			RewardAdButton.isChoosing = false;
 		} else {

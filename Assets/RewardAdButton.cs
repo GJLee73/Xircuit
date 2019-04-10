@@ -32,7 +32,7 @@ public class RewardAdButton : MonoBehaviour {
 	}
 
 	void Update() {
-		Debug.Log (isChoosing);
+		//Debug.Log (isChoosing);
 	}
 
 	// Update is called once per frame
@@ -57,7 +57,7 @@ public class RewardAdButton : MonoBehaviour {
 		if (!isChoosing) {
 			if (isTest) {
 				StartRoulette ();
-				isChoosing = true;
+				//isChoosing = true;
 			}
 			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
 			//AdMobManager.LoadAd ("reward");
