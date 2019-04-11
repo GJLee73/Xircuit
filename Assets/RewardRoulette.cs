@@ -11,6 +11,7 @@ public class RewardRoulette : MonoBehaviour {
 	void Awake(){
 		rouletteCircle = this.GetComponent<RewardRoulette> ();
 		DontDestroyOnLoad (this);
+		GetComponent<AudioSource> ().clip = new_audio;
 	}
 
 	void Start () {
@@ -30,7 +31,7 @@ public class RewardRoulette : MonoBehaviour {
 		while (true) {
 			foreach (Transform tr in arg) {
 				//GetComponent<AudioSource> ().clip = audios [counter % 12];
-				GetComponent<AudioSource> ().Play ();
+				//GetComponent<AudioSource> ().Play ();
 				transform.eulerAngles = tr.eulerAngles;
 				transform.position = tr.position;
 				chosenSection = tr.GetComponent<ChoosingBlock> ().BlockColor;

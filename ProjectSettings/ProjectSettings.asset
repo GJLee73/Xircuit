@@ -10,7 +10,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: 5437
-  productName: Circlt
+  productName: Xircuit
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -90,14 +90,14 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.FFTS.Game
-  bundleVersion: 15.0
+  bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 03738c4717186ec4d8e3337c937bb301
-  AndroidBundleVersionCode: 15
+  AndroidBundleVersionCode: 10
   AndroidMinSdkVersion: 21
   AndroidPreferredInstallLocation: 1
   aotOptions: 

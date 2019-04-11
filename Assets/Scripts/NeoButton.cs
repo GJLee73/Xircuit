@@ -22,6 +22,7 @@ public class NeoButton : MonoBehaviour {
 	public AudioClip BGM2;
 	public AudioSource SoundPlayer2;
 	public Sprite Thanksto;
+	private string adMode = "";
 	// Use this for initialization
 
 	void Update () {
@@ -157,18 +158,22 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
-		bool adEnabled = false;
+		adMode = "";
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		if (Count % 10 == 0 || Count % 10 > 5) {
-			adEnabled = true;
+		if (Count % 10 > 0 && Count % 10 < 6) {
+			adMode = "interstitial";
+		} else {
+			adMode = "reward";
 		}
-
-		if (adEnabled) {
-			AdMobManager.LoadAd ("interstitial");
+		if (adMode == "interstitial") {
+			AdMobManager.LoadAd (adMode);
 			AdMobManager.interstitialAd.OnAdClosed += HandleOnAdClosed;
+		} else if (adMode == "reward") {
+			AdMobManager.LoadAd (adMode);
+			AdMobManager.rewardAd.OnAdClosed += HandleOnAdClosed;
 		}
 
 		//AdMobManager.interstitialAd.OnAdClosed += AdClosedHandler;
@@ -195,8 +200,8 @@ public class NeoButton : MonoBehaviour {
 		S1.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		S2.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		// 2019/2/25 추가한 구글 애드몹 관련 코드
-		if (adEnabled && !AdMobManager.interErrorOccured) {
-			AdMobManager.ShowAd ("interstitial");
+		if (adMode!= "" && !AdMobManager.interErrorOccured) {
+			AdMobManager.ShowAd (adMode);
 		} else {
 			Application.LoadLevel ("Void");
 			StartCoroutine ("ChangeScene", Count);
@@ -213,7 +218,7 @@ public class NeoButton : MonoBehaviour {
 		Application.LoadLevel ("Void");
 		StartCoroutine ("ChangeScene", Count);
 		isChanging = false;
-		AdMobManager.DestroyAd ("interstitial");
+		AdMobManager.DestroyAd (adMode);
 	}
 
 	// Update is called once per frame

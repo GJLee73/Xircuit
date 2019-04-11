@@ -194,4 +194,8 @@ public class ChoosingBlock : MonoBehaviour {
 	public void HideMotherBlock(){
 		MotherBlock.GetComponent<SpriteRenderer> ().enabled = false;
 	}
+
+	public void RemoveBlk(){
+		MotherBlock.SendMessage ("removeBlk");
+	}
 }
