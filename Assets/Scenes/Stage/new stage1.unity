@@ -1221,7 +1221,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c9e568e0cf7ef4d9818ec237c810f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   new_audio: {fileID: 8300000, guid: b0bcdbefb6cbac148a877a94d617b71e, type: 3}
+=======
+  audios:
+  - {fileID: 8300000, guid: 3cc91e5b2b1b0a04d8c7687f8a4fbb96, type: 3}
+  - {fileID: 8300000, guid: d1a3eb876404fbd459e3baab80b7518e, type: 3}
+  - {fileID: 8300000, guid: 8494030dd2fdcfc4fbf69b6ea121912c, type: 3}
+  - {fileID: 8300000, guid: 37330fcad49af5c4a83477874c582152, type: 3}
+  - {fileID: 8300000, guid: 56db10223c2305f46a26bed01249bfb8, type: 3}
+  - {fileID: 8300000, guid: 653c10d29a718ae428ab20474fb997fc, type: 3}
+  - {fileID: 8300000, guid: 71f3e26a70d539a48adea0d9b5e28d00, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 56db10223c2305f46a26bed01249bfb8, type: 3}
+  - {fileID: 8300000, guid: 37330fcad49af5c4a83477874c582152, type: 3}
+  - {fileID: 8300000, guid: 8494030dd2fdcfc4fbf69b6ea121912c, type: 3}
+  - {fileID: 8300000, guid: d1a3eb876404fbd459e3baab80b7518e, type: 3}
+>>>>>>> parent of 098c6a3... changed button image
 --- !u!212 &297490362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6315,6 +6331,7 @@ Prefab:
       propertyPath: isTest
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 21224854, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
       propertyPath: m_Sprite
       value: 
@@ -6344,6 +6361,8 @@ Prefab:
       propertyPath: m_Color.a
       value: 0.503
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 098c6a3... changed button image
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e93d9547d9c79f4e931c8cb8de3dfff, type: 2}
   m_IsPrefabParent: 0

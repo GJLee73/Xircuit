@@ -27,16 +27,27 @@ public class RewardRoulette : MonoBehaviour {
 		int counter = 0;
 
 		this.GetComponent<SpriteRenderer> ().enabled = true;
+<<<<<<< HEAD
 		RewardAdButton.isChoosing = true;
 		while (true) {
 			foreach (Transform tr in arg) {
 				//GetComponent<AudioSource> ().clip = audios [counter % 12];
 				//GetComponent<AudioSource> ().Play ();
+=======
+		while (true) {
+			foreach (Transform tr in arg) {
+				GetComponent<AudioSource> ().clip = audios [counter % 12];
+				GetComponent<AudioSource> ().Play ();
+>>>>>>> parent of 098c6a3... changed button image
 				transform.eulerAngles = tr.eulerAngles;
 				transform.position = tr.position;
 				chosenSection = tr.GetComponent<ChoosingBlock> ().BlockColor;
 				counter++;
+<<<<<<< HEAD
 				yield return new WaitForSeconds (0.1f);
+=======
+				yield return new WaitForSeconds (1.0f);
+>>>>>>> parent of 098c6a3... changed button image
 			}
 		}
 	}
