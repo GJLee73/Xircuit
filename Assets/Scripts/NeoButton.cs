@@ -34,7 +34,7 @@ public class NeoButton : MonoBehaviour {
 
 	void Awake(){
 		////it's cheat code, remove it before production build !!!
-		PlayerPrefs.SetInt("ClearedStage", 50);
+		//PlayerPrefs.SetInt("ClearedStage", 61);
 		///
 
 		Tr = transform;
@@ -162,9 +162,10 @@ public class NeoButton : MonoBehaviour {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		if (Count % 10 == 0 || Count % 10 > 5) {
-			adEnabled = true;
-		}
+		adEnabled = true;
+		//if (Count % 10 == 0 || Count % 10 > 5) {
+			//adEnabled = true;
+		//}
 
 		if (adEnabled) {
 			AdMobManager.LoadAd ("interstitial");
@@ -219,7 +220,9 @@ public class NeoButton : MonoBehaviour {
 	// Update is called once per frame
 	void OnMouseDown(){
 		//Debug.Log (Count);
-
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
 		if (PlayerPrefs.GetInt ("ClearedStage") + 1 > Count && !isChanging) {
 			if (Count < 61) {
 				T2.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
@@ -361,6 +364,9 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	void Minus(){
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
 		if ((Count > 1)&&!isChanging) {
 			T2.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 			if (!isStage) {

@@ -477,14 +477,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 1.8333334
-    functionName: ShowRewardAdButton
+  - time: 0
+    functionName: HideMotherBlock
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.8333334
+  - time: 0.5555556
     functionName: ShowRewardAdButton
     data: 
     objectReferenceParameter: {fileID: 0}

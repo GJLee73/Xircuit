@@ -30,7 +30,11 @@ public class RewardAdButton : MonoBehaviour {
 	void Start () {
 		isChoosing = false;
 	}
-	
+
+	void Update() {
+		//Debug.Log (isChoosing);
+	}
+
 	// Update is called once per frame
 
 
@@ -45,15 +49,16 @@ public class RewardAdButton : MonoBehaviour {
 			AddBlock (chosenColor);
 			mode = true;
 		}*/
-
-
-		if (isTest) {
-
+		//handling for tutorial stages: 1,2,3,5,7
+		int buildIndex = SceneManager.GetActiveScene ().buildIndex;
+		if (buildIndex == 2 || buildIndex == 3 || buildIndex == 4 || buildIndex == 6 || buildIndex == 8) {
+			return;
 		}
+	
 		if (!isChoosing) {
 			if (isTest) {
 				StartRoulette ();
-				isChoosing = true;
+				//isChoosing = true;
 			}
 			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
 			//AdMobManager.LoadAd ("reward");
@@ -62,14 +67,17 @@ public class RewardAdButton : MonoBehaviour {
 			//isChoosing = true;
 		} else {
 			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
-			AddBlock (chosenColor);
+			Debug.Log (chosenColor);
+			if (chosenColor != -1) {
+				AddBlock (chosenColor);
+			}
 			isChoosing = false;
 		}
-		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0);
+		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 
 	void OnMouseUp(){
-		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255);
+		GetComponent<SpriteRenderer> ().color = new Color (255, 255, 255, 0.5f);
 	}
 
 	void HandleRewardBasedVideoRewarded(object sender, Reward args){
@@ -88,7 +96,7 @@ public class RewardAdButton : MonoBehaviour {
 	void StartRoulette(){
 		motherBlock.SendMessage ("Roulette", 6);
 	}
-		
+
 	public static void SetMotherBlock(NeoBlock motherB){
 		motherBlock = motherB;
 	}

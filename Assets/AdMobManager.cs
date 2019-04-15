@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 using GoogleMobileAds.Api;
 
 public class AdMobManager : MonoBehaviour
@@ -20,8 +21,11 @@ public class AdMobManager : MonoBehaviour
 	private const string INTER_TEST_ID = "ca-app-pub-3940256099942544/1033173712";
 	private const string REWARD_TEST_ID = "ca-app-pub-3940256099942544/5224354917";
 	public static bool interErrorOccured = false;
+	public static bool rewardErrorOccured = false;
+	private static AdMobManager instance;
 
 	void Awake (){
+		instance = this;
 		isTest = _isTest;
 		deviceId = _deviceId;
 		appId = _appId;
@@ -65,6 +69,7 @@ public class AdMobManager : MonoBehaviour
 
 	public static void LoadAd(string mode){
 		interErrorOccured = false;
+		rewardErrorOccured = false;
 		AdRequest request = new AdRequest.Builder ().Build ();
 		if (isTest) {
 			if (deviceId.Length > 0) {
@@ -78,7 +83,11 @@ public class AdMobManager : MonoBehaviour
 			interstitialAd.OnAdFailedToLoad += OnInterAdFailedToLoad;
 			interstitialAd.LoadAd (request);
 		} else if (mode == "reward") {
-			rewardAd = RewardBasedVideoAd.Instance;
+			if (rewardAd == null) {
+				rewardAd = RewardBasedVideoAd.Instance;
+				rewardAd.OnAdFailedToLoad += HandleRewardBasedVideoFailedToLoad;
+				rewardAd.OnAdClosed += OnRewardAdClosed;
+			}
 			rewardAd.LoadAd (request, rewardUnitId);
 		}
 	}
@@ -93,12 +102,23 @@ public class AdMobManager : MonoBehaviour
 			}
 			interstitialAd.Show ();
 		} else if (mode == "reward") {
+			instance.StopAllCoroutines ();
 			if (rewardAd.IsLoaded ()) {
+				rewardAd.Show ();
 				Debug.Log ("View Reward Ad");
 			} else {
 				Debug.Log ("Reward Ad is not loaded");
-				LoadAd (mode);
+				//LoadAd (mode);
+				instance.StartCoroutine("CheckLoaded");
 			}
+		}
+	}
+
+	IEnumerator CheckLoaded(){
+		while (!rewardErrorOccured && !rewardAd.IsLoaded()) {
+			yield return new WaitForSeconds (0.1f);
+		}
+		if (rewardAd.IsLoaded ()) {
 			rewardAd.Show ();
 		}
 	}
@@ -117,7 +137,7 @@ public class AdMobManager : MonoBehaviour
 	void OnAdOpening(object sender, EventArgs e) { Debug.Log("OnAdOpening"); }
 	void OnAdStarted(object sender, EventArgs e) { Debug.Log("OnAdStarted"); }
 	void OnAdRewarded(object sender, Reward e) { Debug.Log("OnAdRewarded"); }
-	void OnRewardAdClosed(object sender, EventArgs e)
+	private static void OnRewardAdClosed(object sender, EventArgs e)
 	{
 		Debug.Log("OnRewardAdClosed");
 		LoadAd ("reward");
@@ -127,6 +147,11 @@ public class AdMobManager : MonoBehaviour
 		LoadAd ("interstitial");
 	}
 	void OnAdLeavingApplication(object sender, EventArgs e) { Debug.Log("OnAdLeavingApplication"); }
+	private static void HandleRewardBasedVideoFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+	{
+		rewardErrorOccured = true;
+	}
+
 
 	void OnMouseDown(){
 		LoadAd ("interstitial");
