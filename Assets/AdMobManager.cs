@@ -80,6 +80,7 @@ public class AdMobManager : MonoBehaviour
 		}
 		if (mode == "interstitial") {
 			interstitialAd = new InterstitialAd (interstitialUnitId);
+			interstitialAd.OnAdClosed += OnInterstitialAdClosed;
 			interstitialAd.OnAdFailedToLoad += OnInterAdFailedToLoad;
 			interstitialAd.LoadAd (request);
 		} else if (mode == "reward") {
@@ -103,14 +104,15 @@ public class AdMobManager : MonoBehaviour
 			interstitialAd.Show ();
 		} else if (mode == "reward") {
 			instance.StopAllCoroutines ();
-			if (rewardAd.IsLoaded ()) {
+			instance.StartCoroutine ("CheckLoaded");
+			/*if (rewardAd.IsLoaded ()) {
 				rewardAd.Show ();
 				Debug.Log ("View Reward Ad");
 			} else {
 				Debug.Log ("Reward Ad is not loaded");
 				//LoadAd (mode);
 				instance.StartCoroutine("CheckLoaded");
-			}
+			}*/
 		}
 	}
 
@@ -142,7 +144,7 @@ public class AdMobManager : MonoBehaviour
 		Debug.Log("OnRewardAdClosed");
 		LoadAd ("reward");
 	}
-	void OnInterstitialAdClosed(object sender, EventArgs e){
+	private static void OnInterstitialAdClosed(object sender, EventArgs e){
 		Debug.Log ("OnInterstitialAdClosed");
 		LoadAd ("interstitial");
 	}
