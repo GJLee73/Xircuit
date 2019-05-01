@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Drag
+  - Free
+  - Playing
+  - Reset
+  - Mobile
+  - Static
+  - Blocking
+  - -4
+  - -3
+  - -2
+  - -1
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - Ball
+  - Corner4
+  - BlockCount
+  - Switch
+  - Void
+  - VCNormal
+  - VCCheck
+  - FF
+  - RemoveSprite
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - BlackBlock
+  - RedBlock
+  - GreenBlock
+  - YellowBlock
+  - BlueBlock
+  - MagentaBlock
+  - CyanBlock
+  - WhiteBlock
+  - Void
+  - not
+  - switched1
+  - switched2
+  - switched3
+  - swithced4
+  - switched5
+  - done
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Ball
+    uniqueID: 3637471289
+    locked: 0
+  - name: Block
+    uniqueID: 2359051263
+    locked: 0
