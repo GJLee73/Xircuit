@@ -1436,75 +1436,43 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402912, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 11493868, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11487890, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11473138, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11444170, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11422684, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11418844, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
+    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 1762190760}
     - target: {fileID: 171922, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_Name
       value: New ChildBlocks (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11418844, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11422684, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11444170, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11473138, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11487890, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11493868, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 1762190760}
-    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11418844, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11422684, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444170, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11487890, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11473138, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493868, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
@@ -2851,6 +2819,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &759803529
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4622,7 +4591,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402912, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 171922, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_Name
@@ -6809,6 +6778,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &1578297659
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7186,7 +7156,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402912, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_RootOrder
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 171922, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_Name
@@ -7417,6 +7387,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &1762190764
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7798,7 +7769,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 461476, guid: 0615b8120210953488f8b77fc6a1adde, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 149860, guid: 0615b8120210953488f8b77fc6a1adde, type: 2}
       propertyPath: m_IsActive
@@ -7920,7 +7891,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 402912, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 11493868, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: MotherBlock
@@ -7934,10 +7905,6 @@ Prefab:
       propertyPath: MotherBlock
       value: 
       objectReference: {fileID: 759803525}
-    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: MotherBlock
-      value: 
-      objectReference: {fileID: 759803525}
     - target: {fileID: 11444170, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: MotherBlock
       value: 
@@ -7946,33 +7913,29 @@ Prefab:
       propertyPath: MotherBlock
       value: 
       objectReference: {fileID: 759803525}
+    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: MotherBlock
+      value: 
+      objectReference: {fileID: 759803525}
     - target: {fileID: 11418844, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: MotherBlock
       value: 
       objectReference: {fileID: 759803525}
-    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: MotherBlock
       value: 
       objectReference: {fileID: 759803525}
-    - target: {fileID: 11473138, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
+    - target: {fileID: 21216768, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11452728, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
+    - target: {fileID: 21216768, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_Color.g
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11444170, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11410442, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493868, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
-      propertyPath: isActivated
-      value: 1
+    - target: {fileID: 21216768, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
@@ -9264,6 +9227,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &2139154863
 CircleCollider2D:
   m_ObjectHideFlags: 0
