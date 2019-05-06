@@ -49,13 +49,13 @@ public class NeoBackground : MonoBehaviour {
 
 	void Playing(){
 		//Debug.Log ("Playing");
-		StopCoroutine ("Fade");
-		StartCoroutine ("In");
+		//StopCoroutine ("Fade");
+		//StartCoroutine ("In");
 	}
 
 	void Reset(){
-		StopCoroutine ("In");
-		StartCoroutine ("Fade");
+		//StopCoroutine ("In");
+		//StartCoroutine ("Fade");
 	}
 	          
 }
