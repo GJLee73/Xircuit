@@ -7,6 +7,10 @@ public class RewardRoulette : MonoBehaviour {
 	private int chosenSection = -1;
 	//public AudioClip[] audios = new AudioClip[12];
 	public AudioClip new_audio;
+	public static bool mode = true;
+	public float fixedv = 0.01f;
+	public float acc = 0.001f;
+	public int count = 10;
 	// Use this for initialization
 	void Awake(){
 		rouletteCircle = this.GetComponent<RewardRoulette> ();
@@ -15,47 +19,55 @@ public class RewardRoulette : MonoBehaviour {
 	}
 
 	void Start () {
-	
+
 	}
 
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 
 	public IEnumerator RouletteAnim(List<Transform> arg){
 		int counter = 0;
+		//Transform tr;
 
 		this.GetComponent<SpriteRenderer> ().enabled = true;
-<<<<<<< HEAD
 		RewardAdButton.isChoosing = true;
-		while (true) {
-			foreach (Transform tr in arg) {
+		while (mode) {
+			for (counter = 0; counter < arg.Count; counter++) {
 				//GetComponent<AudioSource> ().clip = audios [counter % 12];
 				//GetComponent<AudioSource> ().Play ();
-=======
-		while (true) {
-			foreach (Transform tr in arg) {
-				GetComponent<AudioSource> ().clip = audios [counter % 12];
-				GetComponent<AudioSource> ().Play ();
->>>>>>> parent of 098c6a3... changed button image
-				transform.eulerAngles = tr.eulerAngles;
-				transform.position = tr.position;
-				chosenSection = tr.GetComponent<ChoosingBlock> ().BlockColor;
-				counter++;
-<<<<<<< HEAD
-				yield return new WaitForSeconds (0.1f);
-=======
-				yield return new WaitForSeconds (1.0f);
->>>>>>> parent of 098c6a3... changed button image
+				transform.eulerAngles = arg[counter].eulerAngles;
+				transform.position = arg[counter].position;
+				//chosenSection = arg[counter].GetComponent<ChoosingBlock> ().BlockColor;
+				yield return new WaitForSeconds (fixedv);
 			}
+		}
+		float v = fixedv;
+		int cnt = 0;
+		while (!mode) {
+			v += fixedv;
+			cnt++;
+			counter = (counter + 1) % arg.Count;
+			transform.eulerAngles = arg[counter].eulerAngles;
+			transform.position = arg[counter].position;
+			chosenSection = arg[counter].GetComponent<ChoosingBlock> ().BlockColor;
+			if (cnt == count) {
+				RewardAdButton.instance.SendMessage ("AddBlock", chosenSection);
+				yield return new WaitForSeconds (1.0f);
+				RewardAdButton.isChoosing = false;
+				this.GetComponent<SpriteRenderer> ().enabled = false;
+				mode = true;
+				break;
+			}
+			yield return new WaitForSeconds (v);
 		}
 	}
 
-	public int StopRoulette(){
+	/*public int StopRoulette(){
 		//stop the roultette and return the color of chosen section
 		StopCoroutine ("RouletteAnim");
 		this.GetComponent<SpriteRenderer> ().enabled = false;
 		return chosenSection;
-	}
+	}*/
 }

@@ -83,8 +83,18 @@ public class NeoBlock : MonoBehaviour {
 	private bool isRemoved;
 	private bool isWaved;
 
+	int GetSum(int[] arr){
+		int sum = 0;
+		foreach(int e in arr){
+			sum += e;
+		}
+		return sum;
+	}
+
 	void Awake () {
-		_BlockNumber = BlockNumber;
+		if (Choosable) {
+			_BlockNumber = BlockNumber;
+		}
 		if (!CustomScale) {
 			GetComponent<CircleCollider2D> ().radius = 4.0f;
 		}
@@ -106,7 +116,9 @@ public class NeoBlock : MonoBehaviour {
 			bigOne.transform.localScale = new Vector3 (4.1f, 4.1f, 1.0f);
 			bigOne.SetActive (false);
 		}
-		Blk.gameObject.SetActive (false);
+		if (Blk != null) {
+			Blk.gameObject.SetActive (false);
+		}
 
 
 		WaveS = Clone.GetComponent<SpriteRenderer> ();
@@ -187,7 +199,7 @@ public class NeoBlock : MonoBehaviour {
 			other.GetComponent<Rigidbody2D> ().Sleep ();
 
 			if(!other.GetComponent<Ball>().Checked){
-				
+
 				Order++;
 				other.GetComponent<Ball>().Checked = true;
 				Tag = (other.gameObject.layer - 8) ^ Tag;
@@ -276,7 +288,7 @@ public class NeoBlock : MonoBehaviour {
 			S.color += new Color (0.0f, 0.0f, 0.0f, 1.0f);
 		}
 	}
-		
+
 
 	void OnMouseDown(){
 		if (RewardAdButton.isChoosing) {
@@ -296,8 +308,8 @@ public class NeoBlock : MonoBehaviour {
 
 				for(int k = 0; k<8; k++){
 					//if(C[k]!=null){
-						C [k].SendMessage ("Open");
-						//Open (C[k], Cosine[k], Sine[k]);
+					C [k].SendMessage ("Open");
+					//Open (C[k], Cosine[k], Sine[k]);
 					//}
 				}
 			} else if (isClicked) {
@@ -467,7 +479,7 @@ public class NeoBlock : MonoBehaviour {
 		}
 
 		bigOne.SetActive (false);*/
-		
+
 
 		if (Order.Equals (ConvergeNumber) && L&&isEquipped) {
 			for(int i =0; i<In.Length; i++){
@@ -476,8 +488,8 @@ public class NeoBlock : MonoBehaviour {
 			L = false;
 			StartCoroutine ("Bal", Tag);
 		}
-	
-	
+
+
 		//Ob.gameObject.SetActive (false);
 		//Ob.SendMessage ("Hide");
 		//isClosing = false;

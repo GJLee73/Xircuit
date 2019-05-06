@@ -116,7 +116,7 @@ public class ChoosingBlock : MonoBehaviour {
 		}
 		int BlockNum = NeoBlock.GetBlockNum (BlockColor);
 		if (isActivated&&Enabled&&BlockNum>0) {
-			
+
 			//Number.transform.position = T.position + K * new Vector3 (Co, Si, 0.0f);
 			MotherBlock.SendMessage ("Cloose", BlockColor);
 			MotherBlock.SendMessage("ReduceBlock", BlockColor);

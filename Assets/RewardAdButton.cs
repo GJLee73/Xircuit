@@ -39,6 +39,7 @@ public class RewardAdButton : MonoBehaviour {
 
 
 	void OnMouseDown(){
+		Debug.Log ("sdsddsds");
 		//AddBlock (randomColor);
 		/*if (mode) {
 			AdMobManager.LoadAd ("reward");
@@ -49,11 +50,12 @@ public class RewardAdButton : MonoBehaviour {
 			AddBlock (chosenColor);
 			mode = true;
 		}*/
-
-
-		if (isTest) {
-
+		//handling for tutorial stages: 1,2,3,5,7
+		int buildIndex = SceneManager.GetActiveScene ().buildIndex;
+		if (buildIndex == 2 || buildIndex == 3 || buildIndex == 4 || buildIndex == 6 || buildIndex == 8) {
+			return;
 		}
+	
 		if (!isChoosing) {
 			if (isTest) {
 				StartRoulette ();
@@ -65,12 +67,13 @@ public class RewardAdButton : MonoBehaviour {
 			//StartRoulette ();
 			//isChoosing = true;
 		} else {
-			int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
-			Debug.Log (chosenColor);
-			if (chosenColor != -1) {
-				AddBlock (chosenColor);
-			}
-			isChoosing = false;
+			RewardRoulette.mode = false;
+			//int chosenColor = RewardRoulette.rouletteCircle.StopRoulette ();
+			//Debug.Log (chosenColor);
+			//if (chosenColor != -1) {
+			//	AddBlock (chosenColor);
+			//}
+			//isChoosing = false;
 		}
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
@@ -85,7 +88,7 @@ public class RewardAdButton : MonoBehaviour {
 		AdMobManager.LoadAd ("reward");
 	}
 
-	void AddBlock(int color, int amount=1){
+	void AddBlock(int color){
 		if (color > 7 || color < 0) {
 			throw new UnityException ("unvalid color number");
 		}
@@ -95,7 +98,7 @@ public class RewardAdButton : MonoBehaviour {
 	void StartRoulette(){
 		motherBlock.SendMessage ("Roulette", 6);
 	}
-		
+
 	public static void SetMotherBlock(NeoBlock motherB){
 		motherBlock = motherB;
 	}

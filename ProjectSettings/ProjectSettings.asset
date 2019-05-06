@@ -9,7 +9,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: 5437
+  companyName: TheDash
   productName: Xircuit
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -89,16 +89,16 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.FFTS.Game
-  bundleVersion: 1.0
+  bundleIdentifier: com.TheDash.Game
+  bundleVersion: 1.2
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 03738c4717186ec4d8e3337c937bb301
-  AndroidBundleVersionCode: 10
-  AndroidMinSdkVersion: 21
+  AndroidBundleVersionCode: 3
+  AndroidMinSdkVersion: 19
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -158,8 +158,8 @@ PlayerSettings:
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: C:/Users/tla42/Documents/Xircuit.keystore
+  AndroidKeyaliasName: key0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   androidEnableBanner: 1
@@ -173,7 +173,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: a08de7549424428428215d5f4be623a9, type: 3}
+      m_Icon: {fileID: 2800000, guid: d6c7810e7eea9b845af19e05f175b170, type: 3}
       m_Width: 128
       m_Height: 128
   - m_BuildTarget: iPhone

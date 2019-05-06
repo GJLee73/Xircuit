@@ -22,7 +22,6 @@ public class NeoButton : MonoBehaviour {
 	public AudioClip BGM2;
 	public AudioSource SoundPlayer2;
 	public Sprite Thanksto;
-	private string adMode = "";
 	// Use this for initialization
 
 	void Update () {
@@ -35,7 +34,7 @@ public class NeoButton : MonoBehaviour {
 
 	void Awake(){
 		////it's cheat code, remove it before production build !!!
-		PlayerPrefs.SetInt("ClearedStage", 50);
+		//PlayerPrefs.SetInt("ClearedStage", 61);
 		///
 
 		Tr = transform;
@@ -158,22 +157,19 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
-		adMode = "";
+		bool adEnabled = false;
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		if (Count % 10 > 0 && Count % 10 < 6) {
-			adMode = "interstitial";
-		} else {
-			adMode = "reward";
-		}
-		if (adMode == "interstitial") {
-			AdMobManager.LoadAd (adMode);
+		adEnabled = true;
+		//if (Count % 10 == 0 || Count % 10 > 5) {
+			//adEnabled = true;
+		//}
+
+		if (adEnabled) {
+			AdMobManager.LoadAd ("interstitial");
 			AdMobManager.interstitialAd.OnAdClosed += HandleOnAdClosed;
-		} else if (adMode == "reward") {
-			AdMobManager.LoadAd (adMode);
-			AdMobManager.rewardAd.OnAdClosed += HandleOnAdClosed;
 		}
 
 		//AdMobManager.interstitialAd.OnAdClosed += AdClosedHandler;
@@ -200,8 +196,8 @@ public class NeoButton : MonoBehaviour {
 		S1.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		S2.color = new Color (1.0f, 1.0f, 1.0f, 1.0f);
 		// 2019/2/25 추가한 구글 애드몹 관련 코드
-		if (adMode!= "" && !AdMobManager.interErrorOccured) {
-			AdMobManager.ShowAd (adMode);
+		if (adEnabled && !AdMobManager.interErrorOccured) {
+			AdMobManager.ShowAd ("interstitial");
 		} else {
 			Application.LoadLevel ("Void");
 			StartCoroutine ("ChangeScene", Count);
@@ -218,13 +214,15 @@ public class NeoButton : MonoBehaviour {
 		Application.LoadLevel ("Void");
 		StartCoroutine ("ChangeScene", Count);
 		isChanging = false;
-		AdMobManager.DestroyAd (adMode);
+		AdMobManager.DestroyAd ("interstitial");
 	}
 
 	// Update is called once per frame
 	void OnMouseDown(){
 		//Debug.Log (Count);
-
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
 		if (PlayerPrefs.GetInt ("ClearedStage") + 1 > Count && !isChanging) {
 			if (Count < 61) {
 				T2.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
@@ -366,6 +364,9 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	void Minus(){
+		if (RewardAdButton.isChoosing) {
+			return;
+		}
 		if ((Count > 1)&&!isChanging) {
 			T2.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
 			if (!isStage) {
