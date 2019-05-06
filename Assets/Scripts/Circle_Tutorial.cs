@@ -19,6 +19,9 @@ public class Circle_Tutorial : MonoBehaviour {
 	IEnumerator coroutine_wave;
 	public GameObject[] circles_other;
 
+	public GameObject[] alphabets;
+	public GameObject[] bars;
+
 	public Color GetColor () {
 		return new Color (color_init.r, color_init.g, color_init.b, 1.0f);
 	}
@@ -70,13 +73,7 @@ public class Circle_Tutorial : MonoBehaviour {
 		transform.position = new Vector3 (this.pos_init.x, this.pos_init.y, 0);
 
 		if (this.target != null) {
-			GameObject.Find ("Instruction").GetComponent<Instruction> ().GetColor (this.tag, target.GetComponent<Circle_Tutorial> ().GetTag ());
 			this.target.GetComponent<Circle_Tutorial> ().ChangeColor (this.tag);
-			for (int i = 0; i < this.circles_other.Length; i++) {
-				if (this.circles_other [i] == target)
-					continue;
-				this.circles_other [i].GetComponent<Circle_Tutorial> ().Remove ();
-			}
 			this.target = null;
 			gameObject.SetActive (false);
 		}
@@ -95,25 +92,30 @@ public class Circle_Tutorial : MonoBehaviour {
 	}
 
 	public void ChangeColor (int tag) {
-		this.tag = this.tag ^ tag;
-		GetComponent<SpriteRenderer> ().color = GameObject.FindWithTag (this.tag.ToString ()).GetComponent<Circle_Tutorial> ().GetColor ();
-		GetComponent <CircleCollider2D> ().enabled = false;
-		StartCoroutine (Move ());
-	}
+		GameObject circle_new_x = NewCircle (tag, -1.0f);
+		GameObject circle_new_y = NewCircle (this.tag, -2.0f);
+		GameObject circle_new_z = NewCircle (this.tag ^ tag, -3.0f);
 
-	public void Remove () {
-		StartCoroutine (FadeOut ());
-	}
+		circle_new_x.GetComponent<Circle_Tutorial> ().Move (new Vector3 (-113.0f, 0.1f, -1.0f));
+		circle_new_y.GetComponent<Circle_Tutorial> ().Move (new Vector3 (-101.0f, 0.1f, -2.0f));
+		circle_new_z.GetComponent<Circle_Tutorial> ().Move_Trigger (new Vector3 (-89.0f, 0.1f, -3.0f), circle_new_x, circle_new_y);
 
-	IEnumerator FadeOut () {
-		Color color = GetComponent<SpriteRenderer> ().color;
-		float a = color.a;
-		while (a >= 0.0f) {
-			a -= 0.05f;
-			GetComponent<SpriteRenderer> ().color = new Color (color.r, color.g, color.b, a);
-			yield return new WaitForSeconds (0.025f);
+		for (int i = 0; i < this.circles_other.Length; i++) {
+			this.circles_other [i].GetComponent<Circle_Tutorial> ().Remove ();
 		}
-		gameObject.SetActive (false);
+	}
+
+	GameObject NewCircle (int tag, float order) {
+		// Instantiate Circle with Blended Color
+		Vector3 position = new Vector3 (transform.position.x, transform.position.y, order);
+		GameObject circle_new = (GameObject) Instantiate (circles_other[tag], position, Quaternion.identity);
+
+		// Serring New Circle
+		Color color = circle_new.GetComponent<SpriteRenderer> ().color;
+		circle_new.GetComponent<SpriteRenderer> ().color = new Color (color.r, color.g, color.b, 1.0f);
+		circle_new.GetComponent<CircleCollider2D> ().enabled = false;
+
+		return circle_new;
 	}
 
 	IEnumerator MakeWave () {
@@ -134,14 +136,56 @@ public class Circle_Tutorial : MonoBehaviour {
 		}
 	}
 
-	IEnumerator Move () {
+	public void Remove () {
+		StartCoroutine (FadeOut ());
+	}
+
+	IEnumerator FadeOut () {
+		for (int i = 0; i < this.alphabets.Length; i++) {
+			this.alphabets [i].SetActive (false);
+		}
+
+		Color color = GetComponent<SpriteRenderer> ().color;
+		float a = color.a;
+		while (a >= 0.0f) {
+			a -= 0.05f;
+			GetComponent<SpriteRenderer> ().color = new Color (color.r, color.g, color.b, a);
+			yield return new WaitForSeconds (0.025f);
+		}
+
+		gameObject.SetActive (false);
+	}
+
+	public void Move (Vector3 pos) {
+		StartCoroutine (Slide (pos));
+	}
+
+	IEnumerator Slide (Vector3 pos) {
 		yield return new WaitForSeconds (0.25f);
 
 		float t = 0.0f;
 		while (t <= 1.0f) {
 			t += 0.05f;
-			transform.position = Vector3.Lerp (pos_init, new Vector3(0.0f,0.0f,0.0f), t);
+			transform.position = Vector3.Lerp (pos_init, pos, t);
 			yield return new WaitForSeconds (0.025f);
 		}
+	}
+
+	public void Move_Trigger (Vector3 pos, GameObject circle_x, GameObject circle_y) {
+		StartCoroutine (Slide_Trigger (pos, circle_x, circle_y));
+	}
+
+	IEnumerator Slide_Trigger (Vector3 pos, GameObject circle_x, GameObject circle_y) {
+		yield return new WaitForSeconds (0.25f);
+
+		float t = 0.0f;
+		while (t <= 1.0f) {
+			t += 0.05f;
+			transform.position = Vector3.Lerp (pos_init, pos, t);
+			yield return new WaitForSeconds (0.025f);
+		}
+
+		yield return new WaitForSeconds (0.25f);
+		GameObject.Find ("Tutorial").GetComponent<Tutorial> ().Animate (circle_x, circle_y);
 	}
 }

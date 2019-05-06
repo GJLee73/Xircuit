@@ -22,6 +22,9 @@ public class BenButton : MonoBehaviour {
 	private Transform Tr;
 	public Transform Focus;
 	public GameObject Clone;
+
+	public SpriteRenderer blind;
+
 	// Use this for initialization
 
 	// Update is called once per frame
@@ -64,7 +67,20 @@ public class BenButton : MonoBehaviour {
 		}
 	}
 
+	void OnMouseDown () {
 
+	}
+
+	void OnMouseUp () {
+		if (Tuto) {
+			Tuto = false;
+			Focus.gameObject.SetActive (false);
+			Pointer.SendMessage ("Fade");
+		}
+		StartCoroutine (Fade ());
+	}
+
+	/*
 	void OnMouseDown () {
 		if (isButton && !onChange) {
 			Au.clip = Sound1;
@@ -116,6 +132,7 @@ public class BenButton : MonoBehaviour {
 				StartCoroutine ("changeBut");
 		}
 	}
+	*/
 
 	IEnumerator changeBen () {
 		onChange = true;
@@ -163,5 +180,20 @@ public class BenButton : MonoBehaviour {
 
 		isButton = true;
 		onChange = false;
+	}
+
+	IEnumerator Fade () {
+		blind.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+		for (int i = 0; i < 20; i++) {
+			blind.GetComponent<SpriteRenderer> ().color += new Color (0.0f, 0.0f, 0.0f, 0.05f);
+			yield return new WaitForSeconds (0.075f);
+		}
+
+		blind.transform.position = new Vector3 (-101.0f, 0.1f, 0.0f);
+		GameObject.FindWithTag ("MainCamera").transform.position = new Vector3 (-101.0f, 0.1f, -10.0f);
+		for (int i = 0; i < 20; i++) {
+			blind.GetComponent<SpriteRenderer> ().color -= new Color (0.0f, 0.0f, 0.0f, 0.05f);
+			yield return new WaitForSeconds (0.075f);
+		}
 	}
 }
