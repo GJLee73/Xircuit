@@ -16,7 +16,7 @@ public class ChoosingBlock : MonoBehaviour {
 	private bool M;
 	public bool isActivated = true;
 	private Animator An;
-	private static bool rewardButtonShown = false;
+	//private static bool rewardButtonShown = false;
 	// Use this for initialization
 	void Awake(){
 		Enabled = true;
@@ -28,6 +28,7 @@ public class ChoosingBlock : MonoBehaviour {
 		C = GetComponent<CircleCollider2D> ();
 		ChangeColor (BlockColor);
 		Hide ();
+		Number.color = new Color (0.0f, 0.0f, 0.0f);
 	}
 
 	void Start(){
@@ -53,8 +54,10 @@ public class ChoosingBlock : MonoBehaviour {
 
 	void Close(){
 		//Debug.Log ("Close");
-		rewardButtonShown = false;
-		RewardAdButton.instance.gameObject.SetActive (false);
+		//rewardButtonShown = false;
+		//RewardAdButton.instance.gameObject.SetActive (false);
+		//RewardAdButton.instance.GetComponent<Animator>().SetTrigger("Close");
+		//RewardAdButton.Close(MotherBlock.GetComponent<NeoBlock>().rewardIndex);
 		Enabled = false;
 		An.SetTrigger ("Close");
 	}
@@ -172,19 +175,23 @@ public class ChoosingBlock : MonoBehaviour {
 	}
 
 	public void ShowRewardAdButton(){
-		if (!rewardButtonShown) {
-			rewardButtonShown = true;
-			RewardAdButton.instance.gameObject.SetActive (true);
+		//if (!rewardButtonShown) {
+			//rewardButtonShown = true;
+			//RewardAdButton.instance.gameObject.SetActive (true);
+			RewardAdButton.Open(MotherBlock.GetComponent<NeoBlock>().rewardIndex);
+			//RewardAdButton.instance.GetComponent<Animator>().SetTrigger("Open");
 			MotherBlock.GetComponent<SpriteRenderer> ().enabled = false;
-		}
+		//}
 	}
 
 	public void RemoveRewardAdButton() {
-		if (rewardButtonShown) {
-			rewardButtonShown = false;
-			RewardAdButton.instance.gameObject.SetActive (false);
+		//if (rewardButtonShown) {
+			//rewardButtonShown = false;
+			RewardAdButton.Close (MotherBlock.GetComponent<NeoBlock> ().rewardIndex);
+			//RewardAdButton.instance.GetComponent<Animator> ().SetTrigger ("Close");
+			//RewardAdButton.instance.gameObject.SetActive (false);
 			//MotherBlock.GetComponent<SpriteRenderer> ().enabled = true;
-		}
+		//}
 	}
 
 	public void ShowMotherBlock(){
@@ -197,5 +204,9 @@ public class ChoosingBlock : MonoBehaviour {
 
 	public void RemoveBlk(){
 		MotherBlock.SendMessage ("removeBlk");
+	}
+
+	public void ChangeNumberColor(Color c){
+		Number.color = c;
 	}
 }

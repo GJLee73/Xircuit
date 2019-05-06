@@ -82,6 +82,7 @@ public class NeoBlock : MonoBehaviour {
 	public bool isTesting = false;
 	private bool isRemoved;
 	private bool isWaved;
+	public int rewardIndex;
 
 	int GetSum(int[] arr){
 		int sum = 0;
@@ -372,7 +373,7 @@ public class NeoBlock : MonoBehaviour {
 	}
 
 	void Close(int BC, Transform Ob, float Co, float Si){
-		RewardAdButton.instance.gameObject.SetActive (false);
+		//RewardAdButton.instance.gameObject.SetActive (false);
 		isClosing = true;
 		isClicked = false;
 		if (isEquipped&&!BC.Equals(8)) {
@@ -523,8 +524,9 @@ public class NeoBlock : MonoBehaviour {
 			}
 		}
 		bigOne.SetActive (true);
-		RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
-		RewardAdButton.instance.transform.position = transform.position + new Vector3(0, 0, -1);
+		rewardIndex = RewardAdButton.SetMotherBlock(GetComponent<NeoBlock>());
+		RewardAdButton.movePos (transform.position + new Vector3 (0, 0, -1), rewardIndex);
+		//RewardAdButton.instance.transform.position = transform.position + new Vector3(0, 0, -1);
 		//firstClk = true;
 		//isOpening = false;
 		StartCoroutine ("TouchPositionCheck");
@@ -719,7 +721,7 @@ public class NeoBlock : MonoBehaviour {
 				startIndex -= 8;
 			}
 			if (GetBlockNum(order[startIndex]) == 0){
-				Debug.Log ("Index: " + order [startIndex]);
+				//Debug.Log ("Index: " + order [startIndex]);
 				sections.Add (C [order [startIndex]]);
 			}
 			startIndex++;
@@ -730,6 +732,14 @@ public class NeoBlock : MonoBehaviour {
 		} else {
 			RewardRoulette.rouletteCircle.SendMessage ("RouletteAnim", sections);
 		}
+	}
+
+	public void ChangeNumberBlack(int num){
+		C [num].SendMessage ("ChangeNumberColor", new Color (0.0f, 0.0f, 0.0f));
+	}
+
+	public void ChangeNumberWhite(int num){
+		C [num].SendMessage ("ChangeNumberColor", new Color (1.0f, 1.0f, 1.0f));
 	}
 
 	public static class CoroutineUtilities {

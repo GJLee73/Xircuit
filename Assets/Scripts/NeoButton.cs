@@ -22,6 +22,7 @@ public class NeoButton : MonoBehaviour {
 	public AudioClip BGM2;
 	public AudioSource SoundPlayer2;
 	public Sprite Thanksto;
+	public bool adEnabled = true;
 	// Use this for initialization
 
 	void Update () {
@@ -157,12 +158,12 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
-		bool adEnabled = false;
+		//bool adEnabled = false;
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		adEnabled = true;
+		//adEnabled = true;
 		//if (Count % 10 == 0 || Count % 10 > 5) {
 			//adEnabled = true;
 		//}

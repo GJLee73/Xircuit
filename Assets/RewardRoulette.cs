@@ -45,6 +45,10 @@ public class RewardRoulette : MonoBehaviour {
 		}
 		float v = fixedv;
 		int cnt = 0;
+		int rewardIndex = -1;
+		if (arg [0]) {
+			rewardIndex = arg [0].GetComponent<ChoosingBlock>().MotherBlock.GetComponent<NeoBlock>().rewardIndex;
+		}
 		while (!mode) {
 			v += fixedv;
 			cnt++;
@@ -53,11 +57,14 @@ public class RewardRoulette : MonoBehaviour {
 			transform.position = arg[counter].position;
 			chosenSection = arg[counter].GetComponent<ChoosingBlock> ().BlockColor;
 			if (cnt == count) {
-				RewardAdButton.instance.SendMessage ("AddBlock", chosenSection);
+				RewardAdButton.ChangeNumberWhite (chosenSection, rewardIndex);
+				RewardAdButton.AddBlock (chosenSection, rewardIndex);
+				//RewardAdButton.instance.SendMessage ("AddBlock", chosenSection);
 				yield return new WaitForSeconds (1.0f);
 				RewardAdButton.isChoosing = false;
 				this.GetComponent<SpriteRenderer> ().enabled = false;
 				mode = true;
+				RewardAdButton.ChangeNumberBlack (chosenSection, rewardIndex);
 				break;
 			}
 			yield return new WaitForSeconds (v);
