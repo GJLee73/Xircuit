@@ -1,0 +1,37 @@
+{
+  "client": [
+    {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "922665405722-dj7c537s9eic056vqu46m15utq0colcn.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8AWxsyVJqyeIEThySfXoVhymVEN5yqw8"
+        }
+      ], 
+      "client_info": {
+        "mobilesdk_app_id": "1:922665405722:ios:307f28873f3c5252", 
+        "android_client_info": {
+          "package_name": "com.TheDash.Xircuitpuzzleoflight"
+        }
+      }
+    }
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "xircuit-3485877.appspot.com", 
+    "project_id": "xircuit-3485877", 
+    "firebase_url": "https://xircuit-3485877.firebaseio.com", 
+    "project_number": "922665405722"
+  }
+}
