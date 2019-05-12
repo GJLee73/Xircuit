@@ -22,6 +22,8 @@ public class Circle_Tutorial : MonoBehaviour {
 	public GameObject[] alphabets;
 	public GameObject[] bars;
 
+	public GameObject MousePointer;
+
 	public Color GetColor () {
 		return new Color (color_init.r, color_init.g, color_init.b, 1.0f);
 	}
@@ -43,6 +45,10 @@ public class Circle_Tutorial : MonoBehaviour {
 
 	void OnMouseDrag () {
 		this.is_clicked = true;
+
+		if (MousePointer.activeSelf) {
+			MousePointer.GetComponent<MousePointer> ().Destroy ();
+		}
 
 		GetComponent<SpriteRenderer> ().color = new Color (color_init.r, color_init.g, color_init.b, 1.0f);
 
@@ -186,6 +192,17 @@ public class Circle_Tutorial : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (0.25f);
-		GameObject.Find ("Tutorial").GetComponent<Tutorial> ().Animate (circle_x, circle_y);
+		GameObject.Find ("Tutorial").GetComponent<Tutorial> ().Animate (circle_x, circle_y, gameObject);
+	}
+
+	public void Initialize () {
+		for (int i = 0; i < this.alphabets.Length; i++) {
+			this.alphabets [i].SetActive (true);
+		}
+
+		Color color = GetComponent<SpriteRenderer> ().color;
+		GetComponent<SpriteRenderer> ().color = new Color (color.r, color.g, color.b, 1.0f);
+
+		gameObject.SetActive (true);
 	}
 }

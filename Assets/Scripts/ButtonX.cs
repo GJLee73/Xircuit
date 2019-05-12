@@ -5,11 +5,21 @@ public class ButtonX : MonoBehaviour {
 
 	public SpriteRenderer blind;
 
-	void OnMouseDown () {
+	Vector3 scale_init;
 
+	void Awake () {
+		DontDestroyOnLoad (gameObject);
+
+		scale_init = transform.localScale;
+	}
+
+	void OnMouseDown () {
+		transform.localScale = new Vector3 (scale_init.x*1.2f, scale_init.y*1.2f, scale_init.z);
 	}
 
 	void OnMouseUp () {
+		transform.localScale = scale_init;
+
 		StartCoroutine (Fade ());
 	}
 

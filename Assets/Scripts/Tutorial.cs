@@ -6,7 +6,29 @@ public class Tutorial : MonoBehaviour {
 	public GameObject plus;
 	public GameObject[] equals;
 
-	public void Animate (GameObject circle_x, GameObject circle_y) {
+	public GameObject[] circles;
+
+	GameObject circle_x;
+	GameObject circle_y;
+	GameObject circle_z;
+
+	bool is_done = false;
+
+	void Awake () {
+		DontDestroyOnLoad (gameObject);
+	}
+
+	void Update () {
+		if (is_done && Input.GetMouseButtonDown (0)) {
+			Initialize ();
+		}
+	}
+
+	public void Animate (GameObject circle_x, GameObject circle_y, GameObject circle_z) {
+		this.circle_x = circle_x;
+		this.circle_y = circle_y;
+		this.circle_z = circle_z;
+
 		int slash = circle_x.GetComponent<Circle_Tutorial> ().GetTag () & circle_y.GetComponent<Circle_Tutorial> ().GetTag ();
 		GameObject[] bars_x = circle_x.GetComponent<Circle_Tutorial> ().bars;
 		GameObject[] bars_y = circle_y.GetComponent<Circle_Tutorial> ().bars;
@@ -67,6 +89,25 @@ public class Tutorial : MonoBehaviour {
 			equals [0].GetComponent<SpriteRenderer> ().color += new Color (0.0f, 0.0f, 0.0f, 0.05f);
 			equals [1].GetComponent<SpriteRenderer> ().color += new Color (0.0f, 0.0f, 0.0f, 0.05f);
 			yield return new WaitForSeconds (0.025f);
+		}
+
+		is_done = true;
+	}
+
+	void Initialize () {
+		is_done = false;
+
+		plus.GetComponent<SpriteRenderer> ().color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+
+		equals [0].GetComponent<SpriteRenderer> ().color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+		equals [1].GetComponent<SpriteRenderer> ().color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+
+		Destroy (circle_x);
+		Destroy (circle_y);
+		Destroy (circle_z);
+
+		for (int i = 0; i < this.circles.Length; i++) {
+			circles[i].GetComponent<Circle_Tutorial>().Initialize();
 		}
 	}
 }

@@ -162,7 +162,14 @@ public class NeoButton : MonoBehaviour {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
+
+		// ********************************************
+
 		adEnabled = true;
+
+		// ********************************************
+
+
 		//if (Count % 10 == 0 || Count % 10 > 5) {
 			//adEnabled = true;
 		//}
