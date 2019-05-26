@@ -189,7 +189,12 @@ public class BenButton : MonoBehaviour {
 	IEnumerator Fade () {
 		if (Application.loadedLevelName.Equals ("new stage1") || Application.loadedLevelName.Equals ("Intermid")) {
 			if (Tuto) {
+				Tuto = false;
+
 				Button_X.SetActive (false);
+
+				MousePointer.SetActive (true);
+				MousePointer.GetComponent<MousePointer> ().Move ();
 			}
 		}
 
@@ -205,14 +210,6 @@ public class BenButton : MonoBehaviour {
 			blind.GetComponent<SpriteRenderer> ().color -= new Color (0.0f, 0.0f, 0.0f, 0.05f);
 			yield return new WaitForSeconds (0.075f);
 		}
-
-		if (Application.loadedLevelName.Equals ("new stage1") || Application.loadedLevelName.Equals ("Intermid")) {
-			if (Tuto) {
-				Tuto = false;
-
-				MousePointer.SetActive (true);
-				MousePointer.GetComponent<MousePointer> ().Move ();
-			}
-		}
+			
 	}
 }
