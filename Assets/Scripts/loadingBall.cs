@@ -7,7 +7,11 @@ public class loadingBall : MonoBehaviour {
 	// Use this for initialization
 
 	void Awake () {
-		transform.position = new Vector3 (-12.0f, 25.0f, 0.0f); 
+		transform.position = new Vector3 (-12.0f, 25.0f, 0.0f);
+
+		/*if ((((float)Screen.width / Screen.height) > 1.7f) && (((float)Screen.width / Screen.height) < 1.8f)) {
+			Screen.SetResolution (800,500,true);
+		}*/
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
