@@ -22,6 +22,12 @@ public class BenButton : MonoBehaviour {
 	private Transform Tr;
 	public Transform Focus;
 	public GameObject Clone;
+
+	public SpriteRenderer blind;
+
+	public GameObject MousePointer;
+	public GameObject Button_X;
+
 	// Use this for initialization
 
 	// Update is called once per frame
@@ -34,15 +40,15 @@ public class BenButton : MonoBehaviour {
 	void OnLevelWasLoaded(){
 		if (Application.loadedLevelName.Equals ("new stage1") || Application.loadedLevelName.Equals ("Intermid")) {
 			if (Tuto) {
-				Pointer.SetActive (true);
+				//Pointer.SetActive (true);
 				Focus.gameObject.SetActive (true);
 	
 			}
 		} else {
 			Tuto = false;
-			Pointer.SetActive (false);
+			//Pointer.SetActive (false);
 			Focus.gameObject.SetActive (false);
-			Clone.SetActive (false);
+			//Clone.SetActive (false);
 		}
 	}
 
@@ -60,11 +66,25 @@ public class BenButton : MonoBehaviour {
 			Tr.position = new Vector3 (-30.5f, 19.0f, -3.0f);
 		}
 		if (Tuto) {
-			Pointer.transform.position = Tr.position + new Vector3 (0.81f, -0.83f, 0.0f);
+			//Pointer.transform.position = Tr.position + new Vector3 (0.81f, -0.83f, 0.0f);
 		}
 	}
 
+	void OnMouseDown () {
+		benDiagram.transform.localScale = new Vector3 (1.1f, 1.1f, 1.0f);
+	}
 
+	void OnMouseUp () {
+		if (Tuto) {
+			//Tuto = false;
+			Focus.gameObject.SetActive (false);
+			//Pointer.SendMessage ("Fade");
+		}
+		benDiagram.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
+		StartCoroutine (Fade ());
+	}
+
+	/*
 	void OnMouseDown () {
 		if (isButton && !onChange) {
 			Au.clip = Sound1;
@@ -116,6 +136,7 @@ public class BenButton : MonoBehaviour {
 				StartCoroutine ("changeBut");
 		}
 	}
+	*/
 
 	IEnumerator changeBen () {
 		onChange = true;
@@ -163,5 +184,32 @@ public class BenButton : MonoBehaviour {
 
 		isButton = true;
 		onChange = false;
+	}
+
+	IEnumerator Fade () {
+		if (Application.loadedLevelName.Equals ("new stage1") || Application.loadedLevelName.Equals ("Intermid")) {
+			if (Tuto) {
+				Tuto = false;
+
+				Button_X.SetActive (false);
+
+				MousePointer.SetActive (true);
+				MousePointer.GetComponent<MousePointer> ().Move ();
+			}
+		}
+
+		blind.transform.position = new Vector3 (0.0f, 0.0f, 0.0f);
+		for (int i = 0; i < 20; i++) {
+			blind.GetComponent<SpriteRenderer> ().color += new Color (0.0f, 0.0f, 0.0f, 0.05f);
+			yield return new WaitForSeconds (0.075f);
+		}
+
+		blind.transform.position = new Vector3 (-101.0f, 0.1f, 0.0f);
+		GameObject.FindWithTag ("MainCamera").transform.position = new Vector3 (-101.0f, 0.1f, -10.0f);
+		for (int i = 0; i < 20; i++) {
+			blind.GetComponent<SpriteRenderer> ().color -= new Color (0.0f, 0.0f, 0.0f, 0.05f);
+			yield return new WaitForSeconds (0.075f);
+		}
+			
 	}
 }

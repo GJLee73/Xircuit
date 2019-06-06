@@ -158,7 +158,7 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
-		//bool adEnabled = false;
+		bool adEnabled = false;
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
