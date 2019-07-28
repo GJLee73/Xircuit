@@ -158,12 +158,13 @@ public class NeoButton : MonoBehaviour {
 	}
 
 	IEnumerator StageCleared(){
-		bool adEnabled = false;
+        bool adEnabled = !InAppPurchaser.adRemoved;
 		if (Count > PlayerPrefs.GetInt ("ClearedStage")) {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		adEnabled = true;
+        //adEnabled = true;
+        //adEnabled = false;
 		//if (Count % 10 == 0 || Count % 10 > 5) {
 			//adEnabled = true;
 		//}

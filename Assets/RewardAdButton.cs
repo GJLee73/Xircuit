@@ -43,8 +43,8 @@ public class RewardAdButton : MonoBehaviour {
 
 
 	void OnMouseDown(){
-		//AddBlock (randomColor);
-		/*if (mode) {
+        //AddBlock (randomColor);
+        /*if (mode) {
 			AdMobManager.LoadAd ("reward");
 			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
 			AdMobManager.ShowAd ("reward");
@@ -53,6 +53,8 @@ public class RewardAdButton : MonoBehaviour {
 			AddBlock (chosenColor);
 			mode = true;
 		}*/
+        Debug.Log("sdsdds");
+		
 		//handling for tutorial stages: 1,2,3,5,7
 		int buildIndex = SceneManager.GetActiveScene ().buildIndex;
 		if (buildIndex == 2 || buildIndex == 3 || buildIndex == 4 || buildIndex == 6 || buildIndex == 8) {
@@ -82,6 +84,7 @@ public class RewardAdButton : MonoBehaviour {
 			//}
 			//isChoosing = false;
 		//}
+		
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 
@@ -137,6 +140,7 @@ public class RewardAdButton : MonoBehaviour {
 	public static void Close(int index){
 		instances [index].GetComponent<Animator> ().SetTrigger ("Close");
 		instances [index].motherBlock = null;
+        instances[index].GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 	}
 
 	public static void Open(int index){
