@@ -15,6 +15,10 @@ public class RewardAdButton : MonoBehaviour {
 	private const int MAX_AD_NUM = 2;
 	private static int counter = 0;
 
+	private bool is_tuto = false;
+	public GameObject blinder;
+	public GameObject blinderCircle;
+
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
 		if (instances [0] == null) {
@@ -27,7 +31,19 @@ public class RewardAdButton : MonoBehaviour {
         handlerAdded = false;
 	}
 
-	void OnLevelWasLoaded(int level){
+	void OnLevelWasLoaded(int level) {
+		if (level == 9) {
+			is_tuto = true;
+
+			blinder.SetActive (true);
+			blinderCircle.SetActive (true);
+		} else {
+			is_tuto = false;
+
+			blinder.SetActive (false);
+			blinderCircle.SetActive (false);
+		}
+
 		string[] notStages = {"Void", "Intermid", "start2", "loading"};
 		Debug.Log ("OnSceneLoaded: " + level);
 		if (level > 2) {
@@ -97,6 +113,14 @@ public class RewardAdButton : MonoBehaviour {
 			//}
 			//isChoosing = false;
 		//}
+
+		// GJ's CODE
+		if (is_tuto) {
+			blinder.SetActive (false);
+			blinderCircle.SetActive (false);
+		}
+		//
+
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 

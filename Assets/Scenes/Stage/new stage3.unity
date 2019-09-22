@@ -226,7 +226,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -248,7 +248,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &24768358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,6 +300,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &24768359
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3389,6 +3390,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &858869561
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3658,6 +3660,38 @@ Prefab:
     - target: {fileID: 11473138, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
       propertyPath: isActivated
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 497978, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 486964, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 479032, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477896, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 477784, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 450476, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 415340, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 402342, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba2f72ccccc75d54eb3add618d5f0977, type: 2}
@@ -5935,6 +5969,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &1433516970
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7187,7 +7222,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -7209,7 +7244,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &1783520459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7261,6 +7296,7 @@ MonoBehaviour:
   CustomScale: 0
   Speed: 4
   isTesting: 0
+  rewardIndex: 0
 --- !u!58 &1783520460
 CircleCollider2D:
   m_ObjectHideFlags: 0
