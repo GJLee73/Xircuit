@@ -11,6 +11,7 @@ public class RewardAdButton : MonoBehaviour {
 	//this variable is just for test
 	public static bool isChoosing = false;
 	public bool isTest = false;
+    private bool handlerAdded = false;
 
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
@@ -21,12 +22,13 @@ public class RewardAdButton : MonoBehaviour {
 		}
 		DontDestroyOnLoad (this.gameObject);
 		AdMobManager.LoadAd ("reward");
+        handlerAdded = false;
 	}
 
-	void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+	void OnLevelWasLoaded(int level){
 		string[] notStages = {"Void", "Intermid", "start2", "loading"};
-		Debug.Log ("OnSceneLoaded: " + scene.name);
-		if (scene.buildIndex > 2 && !Array.Exists (notStages, element=>element == scene.name)) {
+		Debug.Log ("OnSceneLoaded: " + level);
+		if (level > 2) {
 			AdMobManager.LoadAd ("reward");
 		}
 	}
@@ -53,9 +55,8 @@ public class RewardAdButton : MonoBehaviour {
 			AddBlock (chosenColor);
 			mode = true;
 		}*/
-        Debug.Log("sdsdds");
-		
-		//handling for tutorial stages: 1,2,3,5,7
+        //handling for tutorial stages: 1,2,3,5,7
+        Debug.Log("RewardAd button pressed");
 		int buildIndex = SceneManager.GetActiveScene ().buildIndex;
 		if (buildIndex == 2 || buildIndex == 3 || buildIndex == 4 || buildIndex == 6 || buildIndex == 8) {
 			return;
@@ -64,12 +65,16 @@ public class RewardAdButton : MonoBehaviour {
 		if (!isChoosing) {
 			if (isTest) {
 				StartRoulette ();
-				//isChoosing = true;
+				isChoosing = true;
 				StartCoroutine ("CheckTouch");
 			}
-			AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
-			//AdMobManager.LoadAd ("reward");
-			AdMobManager.ShowAd ("reward");
+            if (!handlerAdded)
+            {
+                handlerAdded = true;
+                AdMobManager.rewardAd.OnAdRewarded += HandleRewardBasedVideoRewarded;
+            }
+            //AdMobManager.LoadAd ("reward");
+            AdMobManager.ShowAd ("reward");
 			//StartRoulette ();
 			//isChoosing = true;
 
@@ -84,7 +89,6 @@ public class RewardAdButton : MonoBehaviour {
 			//}
 			//isChoosing = false;
 		//}
-		
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 
@@ -103,6 +107,7 @@ public class RewardAdButton : MonoBehaviour {
 
 	void HandleRewardBasedVideoRewarded(object sender, Reward args){
 		StartRoulette ();
+        StartCoroutine("CheckTouch");
 		isChoosing = true;
 		AdMobManager.LoadAd ("reward");
 	}
@@ -140,7 +145,6 @@ public class RewardAdButton : MonoBehaviour {
 	public static void Close(int index){
 		instances [index].GetComponent<Animator> ().SetTrigger ("Close");
 		instances [index].motherBlock = null;
-        instances[index].GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
 	}
 
 	public static void Open(int index){

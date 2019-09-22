@@ -29,11 +29,8 @@ public class ResetButton : MonoBehaviour {
 
 	void OnMouseDown(){
 		if (Enabled) {
-            if (!InAppPurchaser.adRemoved)
-            {
-                AdMobManager.ShowAd("interstitial");
-            }
-            Enabled = false;
+			AdMobManager.ShowAd ("interstitial");
+			Enabled = false;
 			WholeButton.SendMessage ("Close", 2);
 			if (Starter.CompareTag ("Playing")||Starter.CompareTag("FF")) {
 				//Starter.GetComponent<Controller> ().isPlaying = false;
