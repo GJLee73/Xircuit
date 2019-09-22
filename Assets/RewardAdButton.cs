@@ -12,6 +12,10 @@ public class RewardAdButton : MonoBehaviour {
 	public static bool isChoosing = false;
 	public bool isTest = false;
 
+	private bool is_tuto = false;
+	public GameObject blinder;
+	public GameObject blinderCircle;
+
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
 		if (instances [0] == null) {
@@ -23,7 +27,34 @@ public class RewardAdButton : MonoBehaviour {
 		AdMobManager.LoadAd ("reward");
 	}
 
+	void OnLevelWasLoaded(int level) {
+		if (level == 9) {
+			is_tuto = true;
+
+			blinder.SetActive (true);
+			blinderCircle.SetActive (true);
+		} else {
+			is_tuto = false;
+
+			blinder.SetActive (false);
+			blinderCircle.SetActive (false);
+		}
+	}
+
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode){
+
+		Debug.Log ("aa");
+
+		// GJ's CODE
+		if (SceneManager.GetActiveScene ().buildIndex == 9) {
+			blinder.SetActive (true);
+			blinderCircle.SetActive (true);
+		} else {
+			blinder.SetActive (false);
+			blinderCircle.SetActive (false);
+		}
+		//
+
 		string[] notStages = {"Void", "Intermid", "start2", "loading"};
 		Debug.Log ("OnSceneLoaded: " + scene.name);
 		if (scene.buildIndex > 2 && !Array.Exists (notStages, element=>element == scene.name)) {
@@ -82,6 +113,14 @@ public class RewardAdButton : MonoBehaviour {
 			//}
 			//isChoosing = false;
 		//}
+
+		// GJ's CODE
+		if (is_tuto) {
+			blinder.SetActive (false);
+			blinderCircle.SetActive (false);
+		}
+		//
+
 		GetComponent<SpriteRenderer> ().color = new Color (255, 0, 0, 0.5f);
 	}
 

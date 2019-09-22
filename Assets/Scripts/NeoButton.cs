@@ -25,6 +25,9 @@ public class NeoButton : MonoBehaviour {
 	public bool adEnabled = true;
 	// Use this for initialization
 
+	private bool buyAD = false;
+	public GameObject buyButton;
+
 	void Update () {
 		if (Application.platform == RuntimePlatform.Android) {
 			if (Input.GetKey (KeyCode.Escape)) {
@@ -116,7 +119,7 @@ public class NeoButton : MonoBehaviour {
 		BGMPlayer2.Play ();
 	}	
 
-	void OnLevelWasLoaded(){
+	void OnLevelWasLoaded(int level){
 		if (((float)Screen.width / Screen.height)>1.59f&&((float)Screen.width / Screen.height)<1.61f) {  //16/10
 			Camera.main.orthographicSize = 23.0f;
 		} else if ((((float)Screen.width / Screen.height)>1.7f)&&(((float)Screen.width/Screen.height)<1.8f)) { //16/9
@@ -147,6 +150,14 @@ public class NeoButton : MonoBehaviour {
 		if (isStage) {
 			StartCoroutine ("Fade", 1);
 		}
+
+		// GJ's CODE
+		if (level > 11 && level < 61 && level % 5 == 2) {
+			buyAD = true;
+		} else {
+			buyAD = false;
+		}
+		//
 	}
 
 	void Start () {
@@ -163,7 +174,11 @@ public class NeoButton : MonoBehaviour {
 			PlayerPrefs.SetInt ("ClearedStage", Count);
 		}
 		Count++;
-		adEnabled = true;
+
+
+		//adEnabled = true;
+
+
 		//if (Count % 10 == 0 || Count % 10 > 5) {
 			//adEnabled = true;
 		//}
@@ -209,6 +224,10 @@ public class NeoButton : MonoBehaviour {
 		// 2019/2/25 추가한 구글 애드몹 관련 코드
 		//StartCoroutine ("ChangeScene", Count);
 		//isChanging = false;
+
+		if (buyAD) {
+			buyButton.SetActive (true);
+		}
 	}
 
 	private void HandleOnAdClosed(object sender, EventArgs args){
