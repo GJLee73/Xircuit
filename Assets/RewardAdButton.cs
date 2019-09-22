@@ -12,6 +12,8 @@ public class RewardAdButton : MonoBehaviour {
 	public static bool isChoosing = false;
 	public bool isTest = false;
     private bool handlerAdded = false;
+	private const int MAX_AD_NUM = 2;
+	private static int counter = 0;
 
 	void Awake(){
 		//instance = GetComponent<RewardAdButton> ();
@@ -31,6 +33,7 @@ public class RewardAdButton : MonoBehaviour {
 		if (level > 2) {
 			AdMobManager.LoadAd ("reward");
 		}
+		counter = 0;
 	}
 
 	void Start () {
@@ -64,9 +67,14 @@ public class RewardAdButton : MonoBehaviour {
 	
 		if (!isChoosing) {
 			if (isTest) {
+				if (counter >= MAX_AD_NUM) {
+					return;
+				}
 				StartRoulette ();
 				isChoosing = true;
 				StartCoroutine ("CheckTouch");
+				counter++;
+				return;
 			}
             if (!handlerAdded)
             {
