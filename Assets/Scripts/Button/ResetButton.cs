@@ -24,12 +24,12 @@ public class ResetButton : MonoBehaviour {
 		S1 = Clone1.GetComponent<SpriteRenderer> ();
 		S2 = Clone2.GetComponent<SpriteRenderer> ();
 		T = transform;
-		AdMobManager.LoadAd ("interstitial");
+		//AdMobManager.LoadAd ("interstitial");
 	}
 
 	void OnMouseDown(){
 		if (Enabled) {
-			AdMobManager.ShowAd ("interstitial");
+			//AdMobManager.ShowAd ("interstitial");
 			Enabled = false;
 			WholeButton.SendMessage ("Close", 2);
 			if (Starter.CompareTag ("Playing")||Starter.CompareTag("FF")) {

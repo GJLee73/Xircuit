@@ -176,7 +176,7 @@ public class NeoButton : MonoBehaviour {
 		Count++;
 
 
-		adEnabled = true;
+		//adEnabled = true;
 
 
 		//if (Count % 10 == 0 || Count % 10 > 5) {
